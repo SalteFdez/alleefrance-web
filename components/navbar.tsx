@@ -117,6 +117,14 @@ export function Navbar() {
 
             <Button
               asChild
+              className="text-white hover:opacity-90"
+              style={{ backgroundColor: "#0055A4" }}
+            >
+              <Link href="/working-holiday">Working Holiday</Link>
+            </Button>
+
+            <Button
+              asChild
               variant="outline"
               className="font-medium border-2 bg-transparent"
               style={{ borderColor: "#002654", color: "#002654" }}
@@ -198,6 +206,16 @@ export function Navbar() {
                   {link.label}
                 </Link>
               ))}
+
+              <Button
+                asChild
+                className="text-white w-full"
+                style={{ backgroundColor: "#0055A4" }}
+              >
+                <Link href="/working-holiday" onClick={() => setIsOpen(false)}>
+                  Working Holiday
+                </Link>
+              </Button>
 
               <Button
                 asChild

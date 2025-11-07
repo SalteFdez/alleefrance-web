@@ -12,7 +12,7 @@ const featuredServices = [
     description: "Visa de trabajo para empleados. Tramitación completa con acompañamiento profesional.",
     features: ["Contrato de trabajo", "Autorización OFII", "Documentación completa"],
     image: "/visa-salarie.png",
-    link: "/servicios/visa-salarie",
+    link: "/servicios/visas-trabajo",
   },
 ]
 

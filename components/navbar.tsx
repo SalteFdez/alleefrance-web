@@ -27,8 +27,7 @@ export function Navbar() {
   ]
 
   const serviceLinks = [
-    { href: "/servicios/visa-salarie", label: "Visa Salarié" },
-    { href: "/servicios/visa-saisonier", label: "Visa Saisonier" },
+    { href: "/servicios/visas-trabajo", label: "Visas de Trabajo" },
     { href: "/servicios/visa-etudiant", label: "Visa Étudiant" },
     { href: "/servicios", label: "Ver Todos los Servicios", featured: true },
   ]

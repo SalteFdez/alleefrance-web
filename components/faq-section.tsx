@@ -3,19 +3,23 @@ import { MessageCircle } from "lucide-react"
 
 const faqs = [
   {
-    question: "¿Cuánto tiempo tarda el proceso de visa?",
+    question: "¿Cuánto tarda una autorización de trabajo?",
     answer:
-      "El tiempo varía según el tipo de visa. Una visa de trabajo (Salarié) puede tardar entre 2-4 meses, mientras que una visa de estudiante (Étudiant) suele procesarse en 1-3 meses.",
+      "El promedio va de 8 a 12 semanas, dependiendo del puesto, de la prefectura y de la carga de trabajo del Ministère de l’Intérieur. Podés acortar demoras enviando el expediente completo desde el inicio y respondiendo rápido a los pedidos de información.",
   },
   {
-    question: "¿Qué documentos necesito para solicitar una visa francesa?",
+    question: "¿Qué cubre el seguro VVT?",
     answer:
-      "Los documentos varían según el tipo de visa, pero generalmente incluyen: pasaporte válido, fotos tipo carnet, comprobante de alojamiento, seguro médico internacional, estados de cuenta bancarios, y documentos específicos según tu visa.",
+      "Incluye gastos médicos de urgencia en Francia y la UE, repatriación sanitaria, responsabilidad civil y asistencia 24/7. También ofrece cobertura en caso de hospitalización o accidente durante el viaje, requisitos indispensables para el visado.",
   },
   {
-    question: "¿Ofrecen garantía de aprobación de visa?",
+    question: "¿Qué documentos pide el Titre de séjour (estudiante/salarié)?",
     answer:
-      "Si bien no podemos garantizar la aprobación, nuestra experiencia nos permite maximizar tus posibilidades de éxito. Revisamos minuciosamente cada solicitud antes de presentarla.",
+      "Pasaporte vigente, visa de larga estadía o VLS-TS, acta de nacimiento traducida, comprobante de domicilio, seguro médico, medios económicos, contrato o certificado de estudios y, si aplica, los últimos recibos de salario o constancia de inscripción.",
+  },
+  {
+    question: "¿Cómo es la asesoría y qué recibo al final?",
+    answer: "Coordinamos una videollamada de 60 minutos, respondemos tus preguntas y al finalizar te enviamos un resumen escrito con los pasos concretos que debés seguir.",
   },
 ]
 
@@ -25,7 +29,7 @@ export function FAQSection() {
       <div className="max-w-4xl mx-auto px-6">
         <div className="text-center mb-12">
           <h2 className="text-4xl lg:text-5xl font-bold mb-4" style={{ color: "#002654" }}>
-            PRESTONAS FRECUENTES (FAQ)
+            PREGUNTAS FRECUENTES (FAQ)
           </h2>
         </div>
 

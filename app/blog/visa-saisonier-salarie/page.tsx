@@ -9,6 +9,7 @@ export const metadata: Metadata = {
     "Checklist completa para postular a la visa Saisonier o Salarié en Francia: requisitos, contrato, plazos, documentación y consejos prácticos.",
 }
 
+const heroImage = "/seasonal-worker-in-french-vineyard.jpg"
 const timeline = [
   { month: "Mes 1", detail: "Definí sector, región y contactos. Prepará CV/Carta en francés y empezá a enviar candidaturas." },
   { month: "Mes 2", detail: "Cerrá contrato + promesa de empleo, reuní documentación personal y pedí turno consular." },
@@ -44,8 +45,17 @@ export default function VisaSaisonierSalariePage() {
     <div className="min-h-screen bg-white">
       <Navbar />
 
-      <section className="pt-32 pb-16 px-6" style={{ backgroundColor: "#002654" }}>
-        <div className="max-w-4xl mx-auto text-center text-white">
+      <section
+        className="pt-32 pb-16 px-6 relative overflow-hidden"
+        style={{
+          backgroundColor: "#002654",
+          backgroundImage: `url('${heroImage}')`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+        }}
+      >
+        <div className="absolute inset-0" style={{ backgroundColor: "rgba(0, 38, 84, 0.85)" }} />
+        <div className="max-w-4xl mx-auto text-center text-white relative z-10">
           <p className="uppercase tracking-[0.3em] text-sm mb-4 text-white/70">Visas de Trabajo</p>
           <h1 className="text-4xl lg:text-5xl font-bold mb-6">Visa Saisonier o Salarié: Guía 2024</h1>
           <p className="text-xl leading-relaxed mb-6">

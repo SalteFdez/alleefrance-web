@@ -9,6 +9,7 @@ export const metadata: Metadata = {
     "Guía paso a paso para armar tu dossier de admisión, superar Campus France y obtener la visa VLS-TS Étudiant sin demoras.",
 }
 
+const heroImage = "/student-studying-in-paris.jpg"
 const milestones = [
   {
     title: "Selección de programa",
@@ -46,8 +47,17 @@ export default function VisaEstudianteFranciaPage() {
     <div className="min-h-screen bg-white">
       <Navbar />
 
-      <section className="pt-32 pb-16 px-6" style={{ backgroundColor: "#002654" }}>
-        <div className="max-w-4xl mx-auto text-center text-white">
+      <section
+        className="pt-32 pb-16 px-6 relative overflow-hidden"
+        style={{
+          backgroundColor: "#002654",
+          backgroundImage: `url('${heroImage}')`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+        }}
+      >
+        <div className="absolute inset-0" style={{ backgroundColor: "rgba(0, 38, 84, 0.85)" }} />
+        <div className="max-w-4xl mx-auto text-center text-white relative z-10">
           <p className="uppercase tracking-[0.3em] text-sm mb-4 text-white/70">Visas de Estudiante</p>
           <h1 className="text-4xl lg:text-5xl font-bold mb-6">Visa de Estudiante: Pasos y Calendario</h1>
           <p className="text-xl leading-relaxed mb-6">

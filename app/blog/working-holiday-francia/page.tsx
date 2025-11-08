@@ -9,6 +9,7 @@ export const metadata: Metadata = {
     "Todo lo que necesitás para postular a la Working Holiday Francia: cupos, turnos, documentos, presupuesto y consejos para tu llegada.",
 }
 
+const heroImage = "/happy-travelers-in-france.jpg"
 const checklist = [
   "Pasaporte argentino con validez mínima de 12 meses",
   "Certificado de antecedentes penales (con apostilla) emitido hace menos de 3 meses",
@@ -36,8 +37,17 @@ export default function WorkingHolidayFranciaPage() {
     <div className="min-h-screen bg-white">
       <Navbar />
 
-      <section className="pt-32 pb-16 px-6" style={{ backgroundColor: "#002654" }}>
-        <div className="max-w-4xl mx-auto text-center text-white">
+      <section
+        className="pt-32 pb-16 px-6 relative overflow-hidden"
+        style={{
+          backgroundColor: "#002654",
+          backgroundImage: `url('${heroImage}')`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+        }}
+      >
+        <div className="absolute inset-0" style={{ backgroundColor: "rgba(0, 38, 84, 0.85)" }} />
+        <div className="max-w-4xl mx-auto text-center text-white relative z-10">
           <p className="uppercase tracking-[0.3em] text-sm mb-4 text-white/70">Working Holiday</p>
           <h1 className="text-4xl lg:text-5xl font-bold mb-6">Working Holiday Francia: Checklist 2024</h1>
           <p className="text-xl leading-relaxed mb-6">

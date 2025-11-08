@@ -9,6 +9,7 @@ export const metadata: Metadata = {
     "Combiná apps, clases, inmersión y exámenes oficiales para alcanzar el nivel B1/B2 que exigen las visas francesas en menos de 9 meses.",
 }
 
+const heroImage = "/person-learning-french-language.jpg"
 const pillars = [
   {
     title: "Input diario",
@@ -44,8 +45,17 @@ export default function AprenderFrancesRecursosPage() {
     <div className="min-h-screen bg-white">
       <Navbar />
 
-      <section className="pt-32 pb-16 px-6" style={{ backgroundColor: "#002654" }}>
-        <div className="max-w-4xl mx-auto text-center text-white">
+      <section
+        className="pt-32 pb-16 px-6 relative overflow-hidden"
+        style={{
+          backgroundColor: "#002654",
+          backgroundImage: `url('${heroImage}')`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+        }}
+      >
+        <div className="absolute inset-0" style={{ backgroundColor: "rgba(0, 38, 84, 0.85)" }} />
+        <div className="max-w-4xl mx-auto text-center text-white relative z-10">
           <p className="uppercase tracking-[0.3em] text-sm mb-4 text-white/70">Idioma y Cultura</p>
           <h1 className="text-4xl lg:text-5xl font-bold mb-6">Aprender Francés: Recursos y Métodos</h1>
           <p className="text-xl leading-relaxed mb-6">

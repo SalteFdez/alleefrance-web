@@ -140,8 +140,8 @@ export function Navbar() {
               className="text-white transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-red-500/50 active:scale-95" 
               style={{ backgroundColor: "#ED2939" }}
             >
-              <a href="https://wa.me/33601526171" target="_blank" rel="noopener noreferrer">
-                Consulta Gratis
+              <a href="#seguro">
+                Cotizar mi seguro
               </a>
             </Button>
           </div>
@@ -222,6 +222,19 @@ export function Navbar() {
                 asChild 
                 className="text-white w-full mt-2 transition-all duration-300 hover:scale-[1.02] hover:shadow-lg hover:shadow-red-500/50 active:scale-95" 
                 style={{ backgroundColor: "#ED2939" }}
+              >
+                <a
+                  href="#seguro"
+                  onClick={() => setIsOpen(false)}
+                >
+                  Cotizar mi seguro
+                </a>
+              </Button>
+              
+              <Button 
+                asChild 
+                variant="outline"
+                className="text-white w-full mt-2 border-2 border-white/50 transition-all duration-300 hover:scale-[1.02] hover:bg-white/10 active:scale-95" 
               >
                 <a
                   href="https://wa.me/33601526171"

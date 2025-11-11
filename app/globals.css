@@ -128,3 +128,48 @@
     @apply bg-background text-foreground;
   }
 }
+
+.convertkit-wrapper :where(.formkit-form, .seva-form) {
+  border-radius: 1.25rem;
+  border: 1px solid #dfe7fb;
+  box-shadow: 0 25px 60px rgba(0, 38, 84, 0.08);
+  background-color: #fff;
+}
+
+.convertkit-wrapper :where(.formkit-header) {
+  font-size: 2rem;
+  line-height: 1.2;
+  color: #002654;
+  font-weight: 700;
+}
+
+.convertkit-wrapper :where(.formkit-subheader) {
+  font-size: 1.0625rem;
+  color: #4b5563;
+}
+
+.convertkit-wrapper :where(.formkit-input) {
+  border-radius: 0.75rem;
+  border: 1px solid #cfd8ea;
+  padding: 1rem 1.25rem;
+  font-size: 1rem;
+}
+
+.convertkit-wrapper :where(.formkit-input:focus) {
+  border-color: #002654;
+  box-shadow: 0 0 0 3px rgba(0, 38, 84, 0.15);
+}
+
+.convertkit-wrapper :where(.formkit-submit) {
+  border-radius: 0.75rem;
+  background-color: #ed2939 !important;
+  border: none;
+  font-weight: 600;
+  font-size: 1rem;
+  padding: 1.1rem;
+  transition: opacity 150ms ease;
+}
+
+.convertkit-wrapper :where(.formkit-submit:hover) {
+  opacity: 0.9;
+}

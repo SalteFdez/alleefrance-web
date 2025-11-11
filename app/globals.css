@@ -160,6 +160,15 @@
   box-shadow: 0 0 0 3px rgba(0, 38, 84, 0.15);
 }
 
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
 .convertkit-wrapper :where(.formkit-submit) {
   border-radius: 0.75rem;
   background-color: #ed2939 !important;

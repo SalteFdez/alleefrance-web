@@ -1,7 +1,13 @@
-import { Button } from "@/components/ui/button"
-import Link from "next/link"
+"use client";
+
+import { useRef } from "react";
+import Link from "next/link";
+import { ChevronLeft, ChevronRight } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 export function BlogSection() {
+  const scrollRef = useRef<HTMLDivElement>(null);
+
   const blogPosts = [
     {
       title: "Visa Saisonier o Salarié: Guía Completa 2024",
@@ -18,7 +24,7 @@ export function BlogSection() {
         "Documentos, presupuesto y plan de llegada para aprovechar los cupos Working Holiday sin contratiempos.",
       date: "8 Mar 2024",
       readTime: "8 min",
-      image: "/happy-travelers-in-france.jpg",
+      image: "/french-work-visa-documents.jpg",
       slug: "working-holiday-francia",
     },
     {
@@ -39,21 +45,64 @@ export function BlogSection() {
       image: "/person-learning-french-language.jpg",
       slug: "aprender-frances-recursos",
     },
-  ]
+  ];
+
+  const handleScroll = (direction: "left" | "right") => {
+    if (!scrollRef.current) return;
+    const scrollAmount = scrollRef.current.clientWidth * 0.8;
+    scrollRef.current.scrollBy({
+      left: direction === "left" ? -scrollAmount : scrollAmount,
+      behavior: "smooth",
+    });
+  };
 
   return (
     <section id="blog" className="py-20 bg-white">
       <div className="max-w-7xl mx-auto px-6">
-        <div className="text-center mb-12">
-          <h2 className="text-4xl lg:text-5xl font-bold mb-4" style={{ color: "#002654" }}>
-            BLOG
-          </h2>
+        <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between mb-10">
+          <div className="text-center md:text-left">
+            <p className="text-sm uppercase tracking-[0.3em] text-gray-500 mb-2">
+              Recursos recientes
+            </p>
+            <h2
+              className="text-4xl lg:text-5xl font-bold"
+              style={{ color: "#002654" }}
+            >
+              BLOG
+            </h2>
+          </div>
+
+          <div className="flex items-center justify-center gap-3">
+            <button
+              type="button"
+              aria-label="Ver anterior"
+              onClick={() => handleScroll("left")}
+              className="w-12 h-12 rounded-full border border-gray-200 text-gray-600 hover:text-white hover:bg-[#002654] transition-colors"
+            >
+              <ChevronLeft className="w-5 h-5 mx-auto" />
+            </button>
+            <button
+              type="button"
+              aria-label="Ver siguiente"
+              onClick={() => handleScroll("right")}
+              className="w-12 h-12 rounded-full border border-gray-200 text-gray-600 hover:text-white hover:bg-[#002654] transition-colors"
+            >
+              <ChevronRight className="w-5 h-5 mx-auto" />
+            </button>
+          </div>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div
+          ref={scrollRef}
+          className="flex gap-6 overflow-x-auto snap-x snap-mandatory pb-4 scrollbar-hide"
+        >
           {blogPosts.map((post, index) => (
-            <Link key={index} href={`/blog/${post.slug}`} className="block group">
-              <article className="bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow h-full">
+            <Link
+              key={index}
+              href={`/blog/${post.slug}`}
+              className="min-w-[85%] sm:min-w-[60%] md:min-w-[45%] lg:min-w-[30%] snap-center group"
+            >
+              <article className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow h-full border border-gray-100">
                 <div className="relative h-48 overflow-hidden">
                   <img
                     src={post.image || "/placeholder.svg"}
@@ -62,15 +111,23 @@ export function BlogSection() {
                   />
                 </div>
 
-                <div className="p-6">
+                <div className="p-6 flex flex-col h-full">
                   <p className="text-xs uppercase tracking-widest text-gray-500 mb-2">
                     {post.date} · {post.readTime}
                   </p>
-                  <h3 className="text-lg font-bold mb-3 line-clamp-2" style={{ color: "#002654" }}>
+                  <h3
+                    className="text-lg font-bold mb-3 line-clamp-2"
+                    style={{ color: "#002654" }}
+                  >
                     {post.title}
                   </h3>
-                  <p className="text-gray-600 text-sm mb-4 line-clamp-2">{post.excerpt}</p>
-                  <span className="text-sm font-semibold flex items-center gap-2" style={{ color: "#ED2939" }}>
+                  <p className="text-gray-600 text-sm mb-4 line-clamp-2 flex-1">
+                    {post.excerpt}
+                  </p>
+                  <span
+                    className="text-sm font-semibold flex items-center gap-2"
+                    style={{ color: "#ED2939" }}
+                  >
                     Leer más
                   </span>
                 </div>
@@ -92,5 +149,5 @@ export function BlogSection() {
         </div>
       </div>
     </section>
-  )
+  );
 }

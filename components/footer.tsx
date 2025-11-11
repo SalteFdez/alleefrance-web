@@ -1,77 +1,166 @@
-import { Instagram, MessageCircle, ExternalLink } from "lucide-react"
+import { Instagram, MessageCircle, ExternalLink, Shield, Mail, MapPin, Phone } from "lucide-react"
 import Image from "next/image"
+import Link from "next/link"
 
 export function Footer() {
   return (
-    <footer className="py-12" style={{ backgroundColor: "#002654" }}>
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="grid md:grid-cols-3 gap-8 mb-8">
+    <footer className="relative overflow-hidden" style={{ backgroundColor: "#002654" }}>
+      {/* Decorative top border */}
+      <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-white/20 to-transparent"></div>
+      
+      <div className="max-w-7xl mx-auto px-6 py-16">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
           {/* Logo and Description */}
-          <div className="space-y-4">
-            <div className="flex items-center">
-              <Image
-                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-Vtix0eTofgeNjrQ4fneJ7FLj7BQyUU.png"
-                alt="Allée France Logo"
-                width={140}
-                height={70}
-                className="h-14 w-auto brightness-0 invert"
-              />
-            </div>
+          <div className="space-y-6">
+            <Link href="/" className="inline-flex items-center gap-3 group">
+              <div className="relative h-12 w-auto transition-transform duration-300 group-hover:scale-105">
+                <Image
+                  src="/logofondotransparente.png"
+                  alt="Allée France Logo"
+                  width={120}
+                  height={48}
+                  className="h-full w-auto object-contain"
+                  priority
+                />
+              </div>
+            </Link>
             <p className="text-gray-300 text-sm leading-relaxed">
               Especialistas en asesoría migratoria y tramitación de visas para Francia. Tu sueño francés, nuestro
               compromiso.
             </p>
+            <div className="pt-2">
+              <Link
+                href="#seguro"
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-white text-sm font-semibold transition-all duration-300 hover:scale-105 hover:shadow-lg"
+                style={{ backgroundColor: "#ED2939" }}
+              >
+                <Shield className="w-4 h-4" />
+                Cotizar mi seguro
+              </Link>
+            </div>
           </div>
 
           {/* Quick Links */}
           <div className="space-y-4">
-            <h3 className="font-bold text-white text-lg">Enlaces Rápidos</h3>
-            <ul className="space-y-2">
+            <h3 className="font-bold text-white text-lg mb-4">Enlaces Rápidos</h3>
+            <ul className="space-y-3 list-none">
               <li>
-                <a href="/#servicios" className="text-gray-300 hover:text-white transition-colors text-sm">
+                <Link
+                  href="/#servicios"
+                  className="text-gray-300 hover:text-white transition-all duration-300 block"
+                >
                   Servicios
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="/#casos-exitosos" className="text-gray-300 hover:text-white transition-colors text-sm">
+                <Link
+                  href="/#casos-exitosos"
+                  className="text-gray-300 hover:text-white transition-all duration-300 block"
+                >
                   Casos Exitosos
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="/#guia-visas" className="text-gray-300 hover:text-white transition-colors text-sm">
+                <Link
+                  href="/#guia-visas"
+                  className="text-gray-300 hover:text-white transition-all duration-300 block"
+                >
                   Guía de Visas
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="/#faq" className="text-gray-300 hover:text-white transition-colors text-sm">
+                <Link
+                  href="/#seguro"
+                  className="text-gray-300 hover:text-white transition-all duration-300 block"
+                >
+                  Seguro de Viaje
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/#faq"
+                  className="text-gray-300 hover:text-white transition-all duration-300 block"
+                >
                   Preguntas Frecuentes
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="/pagos" className="text-gray-300 hover:text-white transition-colors text-sm">
+                <Link
+                  href="/pagos"
+                  className="text-gray-300 hover:text-white transition-all duration-300 block"
+                >
                   Pagar Servicio
-                </a>
+                </Link>
+              </li>
+            </ul>
+          </div>
+
+          {/* Services */}
+          <div className="space-y-4">
+            <h3 className="font-bold text-white text-lg mb-4">Servicios</h3>
+            <ul className="space-y-3 list-none">
+              <li>
+                <Link
+                  href="/servicios/visas-trabajo"
+                  className="text-gray-300 hover:text-white transition-all duration-300 block"
+                >
+                  Visas de Trabajo
+                </Link>
               </li>
               <li>
-                <a href="/#contacto" className="text-gray-300 hover:text-white transition-colors text-sm">
-                  Contacto
-                </a>
+                <Link
+                  href="/servicios/visa-etudiant"
+                  className="text-gray-300 hover:text-white transition-all duration-300 block"
+                >
+                  Visa Étudiant
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/working-holiday"
+                  className="text-gray-300 hover:text-white transition-all duration-300 block"
+                >
+                  Working Holiday
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/blog"
+                  className="text-gray-300 hover:text-white transition-all duration-300 block"
+                >
+                  Blog
+                </Link>
               </li>
             </ul>
           </div>
 
           {/* Contact and Social */}
           <div className="space-y-4">
-            <h3 className="font-bold text-white text-lg">Contacto</h3>
-            <div className="space-y-3">
-              <p className="text-gray-300 text-sm">📞 +33 6 01 52 61 71</p>
-              <p className="text-gray-300 text-sm">📍 Lyon, Francia</p>
-              <div className="flex gap-4 pt-2">
+            <h3 className="font-bold text-white text-lg mb-4">Contacto</h3>
+            <div className="space-y-4">
+              <a
+                href="tel:+33601526171"
+                className="flex items-center gap-3 text-gray-300 hover:text-white transition-colors group"
+              >
+                <div className="w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300 group-hover:scale-110" style={{ backgroundColor: "rgba(237, 41, 57, 0.2)" }}>
+                  <Phone className="w-5 h-5" style={{ color: "#ED2939" }} />
+                </div>
+                <span className="text-sm">+33 6 01 52 61 71</span>
+              </a>
+              
+              <div className="flex items-start gap-3 text-gray-300">
+                <div className="w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0" style={{ backgroundColor: "rgba(237, 41, 57, 0.2)" }}>
+                  <MapPin className="w-5 h-5" style={{ color: "#ED2939" }} />
+                </div>
+                <span className="text-sm">Lyon, Francia</span>
+              </div>
+
+              <div className="flex gap-3 pt-2">
                 <a
                   href="https://instagram.com/alleefrancelyon"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-10 h-10 rounded-full flex items-center justify-center text-white hover:opacity-80 transition-opacity"
+                  className="w-12 h-12 rounded-full flex items-center justify-center text-white hover:scale-110 transition-all duration-300 hover:shadow-lg"
                   style={{ backgroundColor: "#ED2939" }}
                   aria-label="Instagram"
                 >
@@ -81,7 +170,7 @@ export function Footer() {
                   href="https://wa.me/33601526171"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-10 h-10 rounded-full flex items-center justify-center text-white hover:opacity-80 transition-opacity"
+                  className="w-12 h-12 rounded-full flex items-center justify-center text-white hover:scale-110 transition-all duration-300 hover:shadow-lg"
                   style={{ backgroundColor: "#ED2939" }}
                   aria-label="WhatsApp"
                 >
@@ -91,7 +180,7 @@ export function Footer() {
                   href="https://alleefrancelyon.taplink.ws"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-10 h-10 rounded-full flex items-center justify-center text-white hover:opacity-80 transition-opacity"
+                  className="w-12 h-12 rounded-full flex items-center justify-center text-white hover:scale-110 transition-all duration-300 hover:shadow-lg"
                   style={{ backgroundColor: "#ED2939" }}
                   aria-label="Taplink"
                 >
@@ -103,12 +192,20 @@ export function Footer() {
         </div>
 
         {/* Bottom Bar */}
-        <div className="border-t border-gray-700 pt-8 mt-8">
+        <div className="border-t border-gray-700/50 pt-8 mt-8">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <p className="text-gray-400 text-sm">
+            <p className="text-gray-400 text-sm text-center md:text-left">
               © {new Date().getFullYear()} Allée France. Todos los derechos reservados.
             </p>
-            <p className="text-gray-400 text-sm">Asesoría migratoria profesional para Francia</p>
+            <div className="flex flex-wrap gap-4 justify-center md:justify-end text-sm">
+              <Link href="/#contacto" className="text-gray-400 hover:text-white transition-colors">
+                Contacto
+              </Link>
+              <span className="text-gray-600">•</span>
+              <Link href="/#faq" className="text-gray-400 hover:text-white transition-colors">
+                FAQ
+              </Link>
+            </div>
           </div>
         </div>
       </div>

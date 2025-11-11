@@ -12,7 +12,6 @@ export const COUNTRY_OPTIONS = [
   { code: "MX", name: "México" },
   { code: "CO", name: "Colombia" },
   { code: "PE", name: "Perú" },
-  { code: "EC", name: "Ecuador" },
   { code: "GLOBAL", name: "Global" },
 ];
 

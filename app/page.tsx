@@ -7,6 +7,7 @@ import { BlogSection } from "@/components/blog-section"
 import { SuccessStoriesSection } from "@/components/success-stories-section"
 import { VisaGuideSection } from "@/components/visa-guide-section"
 import { TipsSection } from "@/components/tips-section"
+import { InsuranceSection } from "@/components/insurance-section"
 import { FAQSection } from "@/components/faq-section"
 import { ContactSection } from "@/components/contact-section"
 import { Footer } from "@/components/footer"
@@ -17,12 +18,13 @@ export default function Home() {
       <Navbar />
       <HeroSection />
       <AboutSection />
-      <BenefitsSection />
       <ServicesSection />
+      <BenefitsSection />
       <BlogSection />
       <SuccessStoriesSection />
       <VisaGuideSection />
       <TipsSection />
+      <InsuranceSection />
       <FAQSection />
       <ContactSection />
       <Footer />

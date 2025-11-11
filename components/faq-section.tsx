@@ -1,5 +1,10 @@
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
-import { MessageCircle } from "lucide-react"
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
+import { MessageCircle } from "lucide-react";
 
 const faqs = [
   {
@@ -19,16 +24,20 @@ const faqs = [
   },
   {
     question: "¿Cómo es la asesoría y qué recibo al final?",
-    answer: "Coordinamos una videollamada de 60 minutos, respondemos tus preguntas y al finalizar te enviamos un resumen escrito con los pasos concretos que debés seguir.",
+    answer:
+      "Coordinamos una videollamada de 60 minutos, respondemos tus preguntas y al finalizar te enviamos un resumen escrito con los pasos concretos que debés seguir.",
   },
-]
+];
 
 export function FAQSection() {
   return (
     <section id="faq" className="py-20 bg-gray-50">
       <div className="max-w-4xl mx-auto px-6">
         <div className="text-center mb-12">
-          <h2 className="text-4xl lg:text-5xl font-bold mb-4" style={{ color: "#002654" }}>
+          <h2
+            className="text-4xl lg:text-5xl font-bold mb-4"
+            style={{ color: "#002654" }}
+          >
             PREGUNTAS FRECUENTES (FAQ)
           </h2>
         </div>
@@ -42,7 +51,7 @@ export function FAQSection() {
             style={{ backgroundColor: "#ED2939" }}
           >
             <MessageCircle className="w-6 h-6" />
-            WhatsApp: 33 6 01 52 61 71
+            WhatsApp para más consultas
           </a>
         </div>
 
@@ -60,11 +69,13 @@ export function FAQSection() {
               >
                 {faq.question}
               </AccordionTrigger>
-              <AccordionContent className="text-gray-700 leading-relaxed pb-6">{faq.answer}</AccordionContent>
+              <AccordionContent className="text-gray-700 leading-relaxed pb-6">
+                {faq.answer}
+              </AccordionContent>
             </AccordionItem>
           ))}
         </Accordion>
       </div>
     </section>
-  )
+  );
 }

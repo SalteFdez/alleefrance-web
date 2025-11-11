@@ -4,6 +4,7 @@ import { useRef } from "react";
 import Link from "next/link";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { AnimateOnScroll } from "@/components/animate-on-scroll";
 
 export function BlogSection() {
   const scrollRef = useRef<HTMLDivElement>(null);
@@ -59,18 +60,19 @@ export function BlogSection() {
   return (
     <section id="blog" className="py-20 bg-white">
       <div className="max-w-7xl mx-auto px-6">
-        <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between mb-10">
-          <div className="text-center md:text-left">
-            <p className="text-sm uppercase tracking-[0.3em] text-gray-500 mb-2">
-              Recursos recientes
-            </p>
-            <h2
-              className="text-4xl lg:text-5xl font-bold"
-              style={{ color: "#002654" }}
-            >
-              BLOG
-            </h2>
-          </div>
+        <AnimateOnScroll direction="fade" delay={0}>
+          <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between mb-10">
+            <div className="text-center md:text-left">
+              <p className="text-sm uppercase tracking-[0.3em] text-gray-500 mb-2">
+                Recursos recientes
+              </p>
+              <h2
+                className="text-4xl lg:text-5xl font-bold"
+                style={{ color: "#002654" }}
+              >
+                BLOG
+              </h2>
+            </div>
 
           <div className="flex items-center justify-center gap-3">
             <button
@@ -90,15 +92,16 @@ export function BlogSection() {
               <ChevronRight className="w-5 h-5 mx-auto" />
             </button>
           </div>
-        </div>
+          </div>
+        </AnimateOnScroll>
 
         <div
           ref={scrollRef}
           className="flex gap-6 overflow-x-auto snap-x snap-mandatory pb-4 md:[&::-webkit-scrollbar]:hidden md:[scrollbar-width:none]"
         >
           {blogPosts.map((post, index) => (
+            <AnimateOnScroll key={index} direction="left" delay={index * 0.1} amount={0.1}>
             <Link
-              key={index}
               href={`/blog/${post.slug}`}
               className="min-w-[85%] sm:min-w-[60%] md:min-w-[45%] lg:min-w-[30%] snap-center group"
             >
@@ -133,10 +136,12 @@ export function BlogSection() {
                 </div>
               </article>
             </Link>
+            </AnimateOnScroll>
           ))}
         </div>
 
-        <div className="text-center mt-12">
+        <AnimateOnScroll direction="fade" delay={0.3}>
+          <div className="text-center mt-12">
           <Button
             size="lg"
             variant="outline"
@@ -146,7 +151,8 @@ export function BlogSection() {
           >
             <Link href="/blog">VER TODOS LOS ARTÍCULOS</Link>
           </Button>
-        </div>
+          </div>
+        </AnimateOnScroll>
       </div>
     </section>
   );

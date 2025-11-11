@@ -21,6 +21,14 @@ export function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
+  // Asegurar que el scroll no se bloquee cuando el menú móvil está abierto
+  useEffect(() => {
+    if (isOpen) {
+      // No bloquear el scroll en mobile, solo prevenir el scroll del body si es necesario
+      document.body.style.overflow = ""
+    }
+  }, [isOpen])
+
   const navLinks = [
     { href: "/#nosotros", label: "Nosotros" },
   ]

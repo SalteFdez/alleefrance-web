@@ -1,5 +1,8 @@
+"use client"
+
 import { Card } from "@/components/ui/card";
 import { Briefcase, Sprout, GraduationCap } from "lucide-react";
+import { AnimateOnScroll } from "@/components/animate-on-scroll";
 
 const visaTypes = [
   {
@@ -41,25 +44,27 @@ export function VisaGuideSection() {
   return (
     <section id="guia-visas" className="py-20 bg-white">
       <div className="max-w-7xl mx-auto px-6">
-        <div className="text-center mb-16">
-          <h2
-            className="text-4xl lg:text-5xl font-bold mb-4"
-            style={{ color: "#002654" }}
-          >
-            Guía de Visas
-          </h2>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            Conocé los diferentes tipos de visas disponibles para Francia
-          </p>
-        </div>
+        <AnimateOnScroll direction="fade" delay={0}>
+          <div className="text-center mb-16">
+            <h2
+              className="text-4xl lg:text-5xl font-bold mb-4"
+              style={{ color: "#002654" }}
+            >
+              Guía de Visas
+            </h2>
+            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+              Conocé los diferentes tipos de visas disponibles para Francia
+            </p>
+          </div>
+        </AnimateOnScroll>
 
         <div className="grid md:grid-cols-3 gap-8">
           {visaTypes.map((visa, index) => {
             const Icon = visa.icon;
             return (
-              <Card
-                key={index}
-                className="p-8 hover:shadow-xl transition-all duration-300 border-t-4"
+              <AnimateOnScroll key={index} direction="up" delay={index * 0.15}>
+                <Card
+                  className="p-8 hover:shadow-xl transition-all duration-300 border-t-4"
                 style={{
                   borderTopColor: index % 2 === 0 ? "#002654" : "#ED2939",
                 }}
@@ -116,6 +121,7 @@ export function VisaGuideSection() {
                   </div>
                 </div>
               </Card>
+              </AnimateOnScroll>
             );
           })}
         </div>

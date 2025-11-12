@@ -6,25 +6,66 @@ import { Button } from "@/components/ui/button";
 import { AnimateOnScroll } from "@/components/animate-on-scroll";
 import { ServicesCatalog } from "@/components/servicios/services-catalog";
 import { personas, services } from "@/lib/services-data";
+import { Calendar, MessageCircle } from "lucide-react";
 
 export default function ServiciosPage() {
   return (
     <div className="min-h-screen w-full overflow-x-hidden bg-gray-50">
       <Navbar />
 
-      <main className="pb-16 pt-24">
-        <div className="mx-auto max-w-7xl px-6">
-          <AnimateOnScroll direction="fade" delay={0.1}>
-            <div className="mb-12 text-center">
-              <h1 className="mb-4 text-4xl font-bold text-[#002654] lg:text-5xl">
-                Catálogo de Servicios
-              </h1>
-              <p className="mx-auto max-w-3xl text-xl leading-relaxed text-gray-600">
-                Gestoría Allée France Lyon - Soluciones completas para tu
-                proceso migratorio y administrativo en Francia
-              </p>
-            </div>
-          </AnimateOnScroll>
+      <main>
+        <section
+          className="pt-32 pb-16 px-6"
+          style={{ backgroundColor: "#002654" }}
+        >
+          <div className="mx-auto max-w-7xl">
+            <AnimateOnScroll direction="fade" delay={0.1}>
+              <div className="mb-12 text-center">
+                <h1 className="mb-4 text-4xl font-bold text-white lg:text-5xl">
+                  Catálogo de Servicios
+                </h1>
+                <p className="text-lg lg:text-xl text-white/90 leading-relaxed mb-10">
+                  Gestoría Allée France Lyon - Soluciones completas para tu
+                  proceso migratorio y administrativo en Francia
+                </p>
+                <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Button
+                size="lg"
+                className="text-white font-semibold hover:opacity-90"
+                style={{ backgroundColor: "#ED2939" }}
+                asChild
+              >
+                <a
+                  href="https://wa.me/33601526171"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <MessageCircle className="w-5 h-5 mr-2" />
+                  Consultar por WhatsApp
+                </a>
+              </Button>
+              <Button
+                size="lg"
+                variant="outline"
+                className="bg-white text-[#002654] font-semibold hover:bg-gray-100"
+                asChild
+              >
+                <a
+                  href="https://alleefrancelyon.taplink.ws"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Calendar className="w-5 h-5 mr-2" />
+                  Reservar Asesoría
+                </a>
+              </Button>
+            </div>  
+              </div>
+            </AnimateOnScroll>
+          </div>
+        </section>
+
+        <div className="mx-auto max-w-7xl px-6 pb-16 pt-16">
 
           <ServicesCatalog personas={personas} services={services} />
 

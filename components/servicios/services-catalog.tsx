@@ -147,19 +147,30 @@ export function ServicesCatalog({ personas, services }: ServicesCatalogProps) {
                 transition={{ type: "spring", stiffness: 280, damping: 18 }}
                 className="h-full"
               >
-                <Card className="group h-full rounded-2xl border border-slate-100 bg-white p-6 shadow-[0_15px_40px_rgba(0,0,0,0.08)] transition-colors duration-300 hover:border-[#002654]/40">
-                  <div className="space-y-5">
+                <Card className="group relative h-full overflow-hidden rounded-xl border border-gray-200 bg-white p-6 shadow-sm transition-all duration-300 hover:shadow-md">
+                  {/* Corte diagonal en esquina superior derecha */}
+                  <div className="absolute right-0 top-0 h-16 w-16">
+                    <div
+                      className="h-full w-full"
+                      style={{
+                        clipPath: "polygon(100% 0, 100% 100%, 0 0)",
+                        backgroundColor: "#ED2939",
+                      }}
+                    />
+                  </div>
+                  
+                  <div className="relative space-y-4">
                     <div className="flex items-start justify-between">
-                      <div className="flex h-14 w-14 items-center justify-center rounded-xl bg-[#ED2939]/10 text-[#ED2939] transition-transform duration-300 group-hover:scale-110">
-                        <Icon className="h-7 w-7" />
+                      <div className="flex h-12 w-12 items-center justify-center text-[#ED2939]">
+                        <Icon className="h-6 w-6 stroke-2" strokeWidth={2} />
                       </div>
-                      <Badge className="rounded-full bg-[#002654]/10 px-4 py-1 font-semibold text-[#002654]">
+                      <Badge className="relative z-10 rounded-full bg-gray-100 px-3 py-1 text-xs font-medium text-gray-700">
                         {service.price}
                       </Badge>
                     </div>
 
                     <div>
-                      <h3 className="mb-2 text-xl font-bold text-[#002654]">
+                      <h3 className="mb-2 text-lg font-bold text-[#002654]">
                         {service.title}
                       </h3>
                       <p className="text-sm leading-relaxed text-gray-600">
@@ -167,23 +178,18 @@ export function ServicesCatalog({ personas, services }: ServicesCatalogProps) {
                       </p>
                     </div>
 
-                    <div className="flex items-center gap-2 text-sm text-gray-500">
-                      <Clock className="h-4 w-4" />
-                      <span>{service.duration}</span>
-                    </div>
-
-                    <ul className="space-y-2">
+                    <ul className="space-y-2.5">
                       {service.details.slice(0, 3).map((detail, index) => (
                         <li
                           key={index}
-                          className="flex items-start gap-2 text-sm text-gray-600"
+                          className="flex items-start gap-2 text-sm text-gray-700"
                         >
                           <CheckCircle className="mt-0.5 h-4 w-4 shrink-0 text-[#ED2939]" />
                           <span className="leading-relaxed">{detail}</span>
                         </li>
                       ))}
                       {service.details.length > 3 && (
-                        <li className="text-sm italic text-gray-500">
+                        <li className="text-sm text-gray-500">
                           +{service.details.length - 3} más...
                         </li>
                       )}

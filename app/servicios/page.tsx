@@ -14,8 +14,9 @@ export default function ServiciosPage() {
       <Navbar />
 
       <main>
+        {/* HERO CATÁLOGO */}
         <section
-          className="pt-32 pb-16 px-6"
+          className="pt-28 pb-8 px-4"
           style={{ backgroundColor: "#002654" }}
         >
           <div className="mx-auto max-w-7xl">
@@ -24,61 +25,77 @@ export default function ServiciosPage() {
                 <h1 className="mb-4 text-4xl font-bold text-white lg:text-5xl">
                   Catálogo de Servicios
                 </h1>
-                <p className="text-lg lg:text-xl text-white/90 leading-relaxed mb-10">
-                  Gestoría Allée France Lyon - Soluciones completas para tu
-                  proceso migratorio y administrativo en Francia
+
+                <p className="text-lg lg:text-xl text-white/90 leading-relaxed">
+                  Gestoría Allée France Lyon – Soluciones completas para tu
+                  proceso migratorio y administrativo en Francia.
                 </p>
-                <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button
-                size="lg"
-                className="text-white font-semibold hover:opacity-90"
-                style={{ backgroundColor: "#ED2939" }}
-                asChild
-              >
-                <a
-                  href="https://wa.me/33601526171"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <MessageCircle className="w-5 h-5 mr-2" />
-                  Consultar por WhatsApp
-                </a>
-              </Button>
-              <Button
-                size="lg"
-                variant="outline"
-                className="bg-white text-[#002654] font-semibold hover:bg-gray-100"
-                asChild
-              >
-                <a
-                  href="https://alleefrancelyon.taplink.ws"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <Calendar className="w-5 h-5 mr-2" />
-                  Reservar Asesoría
-                </a>
-              </Button>
-            </div>  
+
+                {/* Microcopy de ayuda */}
+                <p className="mt-4 text-sm lg:text-base text-white/80">
+                  ¿No sabés por dónde empezar? Te recomendamos agendar una asesoría.
+                </p>
+
+                {/* Botones principales */}
+                <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
+                  {/* CTA principal: Reservar asesoría */}
+                  <Button
+                    size="lg"
+                    className="text-white font-semibold tracking-wide px-8 py-6 rounded-full shadow-lg hover:shadow-xl hover:scale-[1.02] transition-all"
+                    style={{ backgroundColor: "#ED2939" }}
+                    asChild
+                  >
+                    <a
+                      href="https://alleefrancelyon.taplink.ws"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <Calendar className="w-5 h-5 mr-2" />
+                      Reservar asesoría
+                    </a>
+                  </Button>
+
+                  {/* CTA secundario: WhatsApp */}
+                  <Button
+                    size="lg"
+                    variant="outline"
+                    className="bg-white text-[#002654] font-semibold tracking-wide px-8 py-6 rounded-full border-0 shadow-md hover:bg-gray-100 hover:shadow-lg transition-all"
+                    asChild
+                  >
+                    <a
+                      href="https://wa.me/33601526171"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <MessageCircle className="w-5 h-5 mr-2" />
+                      Consultar por WhatsApp
+                    </a>
+                  </Button>
+                </div>
+
+                {/* Tiempo de respuesta */}
+                <p className="mt-4 text-xs sm:text-sm text-white/70">
+                  Respondemos en menos de 24 hs.
+                </p>
               </div>
             </AnimateOnScroll>
           </div>
         </section>
 
+        {/* CONTENIDO CATÁLOGO */}
         <div className="mx-auto max-w-7xl px-6 pb-16 pt-16">
-
           <ServicesCatalog personas={personas} services={services} />
 
+          {/* CTA FINAL */}
           <AnimateOnScroll direction="fade" delay={0.3}>
             <div className="mt-16 text-center">
               <Card
-                className="border-2 bg-white p-8"
-                style={{ borderColor: "rgba(0, 38, 84, 0.1)" }}
+                className="border border-slate-100 bg-white rounded-2xl p-8 shadow-md lg:p-10"
               >
                 <h2 className="mb-4 text-2xl font-bold text-[#002654]">
                   ¿No encuentras el servicio que necesitas?
                 </h2>
-                <p className="mx-auto mb-6 max-w-2xl leading-relaxed text-gray-600">
+                <p className="mx-auto mb-8 max-w-2xl leading-relaxed text-gray-600">
                   Contáctanos para una consulta personalizada. Nuestro equipo de
                   expertos está listo para ayudarte con cualquier trámite
                   migratorio o administrativo en Francia.
@@ -86,7 +103,7 @@ export default function ServiciosPage() {
                 <div className="flex flex-col gap-4 sm:flex-row sm:justify-center">
                   <Button
                     asChild
-                    className="font-semibold text-white hover:opacity-90"
+                    className="font-semibold text-white px-8 py-6 rounded-full shadow-lg hover:shadow-xl hover:scale-[1.02] transition-all"
                     style={{ backgroundColor: "#ED2939" }}
                   >
                     <a
@@ -94,16 +111,18 @@ export default function ServiciosPage() {
                       target="_blank"
                       rel="noopener noreferrer"
                     >
-                      Consulta Gratis por WhatsApp
+                      Consulta gratis por WhatsApp
                     </a>
                   </Button>
                   <Button
                     asChild
                     variant="outline"
-                    className="border-2 bg-transparent font-semibold text-[#002654]"
+                    className="border-2 bg-white font-semibold text-[#002654] px-8 py-6 rounded-full hover:bg-gray-50 transition-colors"
                     style={{ borderColor: "#002654" }}
                   >
-                    <Link href="/#contacto">Formulario de Contacto</Link>
+                    <Link href="/#contacto">
+                      Formulario de contacto
+                    </Link>
                   </Button>
                 </div>
               </Card>

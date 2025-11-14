@@ -74,6 +74,13 @@ const iconMap: Record<IconName, LucideIcon> = {
   HeartPulse,
 };
 
+const WHATSAPP_NUMBER = "33601526171";
+
+const buildWhatsAppLink = (serviceTitle: string) => {
+  const message = `Hola, me interesa el servicio "${serviceTitle}" y quiero recibir más información.`;
+  return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+};
+
 export function ServicesCatalog({ personas, services }: ServicesCatalogProps) {
   const defaultPersona = personas[0]?.id ?? "general";
   const [selectedPersona, setSelectedPersona] =
@@ -85,8 +92,9 @@ export function ServicesCatalog({ personas, services }: ServicesCatalogProps) {
 
   return (
     <>
+      {/* Pills de personas */}
       <AnimateOnScroll direction="fade" delay={0.2}>
-        <div className="mb-12 flex flex-col gap-3 md:flex-row md:flex-wrap md:justify-center">
+        <div className="mb-6 flex flex-col gap-3 md:flex-row md:flex-wrap md:justify-center">
           {personas.map((persona) => {
             const isActive = selectedPersona === persona.id;
             return (
@@ -94,7 +102,12 @@ export function ServicesCatalog({ personas, services }: ServicesCatalogProps) {
                 key={persona.id}
                 type="button"
                 onClick={() => setSelectedPersona(persona.id)}
-                className="relative w-full cursor-pointer overflow-hidden rounded-2xl border-2 border-slate-200 px-6 py-4 text-left transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#ED2939]/60 md:w-auto md:rounded-full"
+                className={`relative w-full cursor-pointer overflow-hidden rounded-2xl border-2 px-6 py-4 text-left transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#ED2939]/60 md:w-auto md:rounded-full
+                ${
+                  isActive
+                    ? "border-transparent"
+                    : "border-slate-200 hover:border-slate-300"
+                }`}
                 aria-pressed={isActive}
                 whileTap={{ scale: 0.98 }}
               >
@@ -104,7 +117,7 @@ export function ServicesCatalog({ personas, services }: ServicesCatalogProps) {
                     className="absolute inset-0 rounded-full"
                     style={{
                       background:
-                        "linear-gradient(120deg, rgba(0,38,84,0.18), rgba(0,38,84,0.35))",
+                        "linear-gradient(120deg, #002654, #003b8e)",
                     }}
                     aria-hidden="true"
                     transition={{ type: "spring", bounce: 0.3, duration: 0.4 }}
@@ -113,12 +126,16 @@ export function ServicesCatalog({ personas, services }: ServicesCatalogProps) {
                 <div className="relative flex flex-col gap-1">
                   <span
                     className={`text-base font-semibold ${
-                      isActive ? "text-[#002654]" : "text-slate-700"
+                      isActive ? "text-white" : "text-slate-800"
                     }`}
                   >
                     {persona.label}
                   </span>
-                  <span className="text-xs text-slate-500">
+                  <span
+                    className={`text-xs ${
+                      isActive ? "text-white/80" : "text-slate-500"
+                    }`}
+                  >
                     {persona.helper}
                   </span>
                 </div>
@@ -126,8 +143,14 @@ export function ServicesCatalog({ personas, services }: ServicesCatalogProps) {
             );
           })}
         </div>
+
+        {/* Texto guía */}
+        <p className="mb-10 text-center text-sm md:text-base text-slate-600">
+          Elige tu perfil y descubre los servicios recomendados para tu situación.
+        </p>
       </AnimateOnScroll>
 
+      {/* Grid de servicios */}
       <AnimatePresence mode="wait">
         <motion.div
           key={selectedPersona}
@@ -139,38 +162,40 @@ export function ServicesCatalog({ personas, services }: ServicesCatalogProps) {
         >
           {filteredServices.map((service) => {
             const Icon = iconMap[service.icon];
+            const whatsappLink = buildWhatsAppLink(service.title);
             return (
               <motion.div
                 key={service.id}
                 variants={cardVariants}
-                whileHover={{ scale: 1.02, y: -2 }}
-                transition={{ type: "spring", stiffness: 280, damping: 18 }}
+                whileHover={{ y: -4 }}
+                transition={{ type: "spring", stiffness: 260, damping: 20 }}
                 className="h-full"
               >
-                <Card className="group relative h-full overflow-hidden rounded-xl border border-gray-200 bg-white p-6 shadow-sm transition-all duration-300 hover:shadow-md">
-                  {/* Corte diagonal en esquina superior derecha */}
-                  <div className="absolute right-0 top-0 h-16 w-16">
-                    <div
-                      className="h-full w-full"
-                      style={{
-                        clipPath: "polygon(100% 0, 100% 100%, 0 0)",
-                        backgroundColor: "#ED2939",
-                      }}
-                    />
-                  </div>
-                  
-                  <div className="relative space-y-4">
+                <Card
+                  className="group relative h-full overflow-hidden rounded-2xl border border-slate-100
+                             bg-white/95 p-6 shadow-md transition-all duration-300
+                             hover:-translate-y-1 hover:shadow-xl"
+                >
+                  <div className="relative space-y-5">
+                    {/* Icono + precio */}
                     <div className="flex items-start justify-between">
-                      <div className="flex h-12 w-12 items-center justify-center text-[#ED2939]">
+                      <div
+                        className="flex h-12 w-12 items-center justify-center rounded-full
+                                   bg-[rgba(237,41,57,0.08)] text-[#ED2939]"
+                      >
                         <Icon className="h-6 w-6 stroke-2" strokeWidth={2} />
                       </div>
-                      <Badge className="relative z-10 rounded-full bg-gray-100 px-3 py-1 text-xs font-medium text-gray-700">
+                      <Badge
+                        className="rounded-full bg-slate-100 px-3 py-1 text-xs font-medium
+                                   text-slate-700 shadow-sm"
+                      >
                         {service.price}
                       </Badge>
                     </div>
 
+                    {/* Título + descripción */}
                     <div>
-                      <h3 className="mb-2 text-lg font-bold text-[#002654]">
+                      <h3 className="mb-1.5 text-lg font-bold text-[#002654]">
                         {service.title}
                       </h3>
                       <p className="text-sm leading-relaxed text-gray-600">
@@ -178,6 +203,7 @@ export function ServicesCatalog({ personas, services }: ServicesCatalogProps) {
                       </p>
                     </div>
 
+                    {/* Detalles */}
                     <ul className="space-y-2.5">
                       {service.details.slice(0, 3).map((detail, index) => (
                         <li
@@ -190,17 +216,24 @@ export function ServicesCatalog({ personas, services }: ServicesCatalogProps) {
                       ))}
                       {service.details.length > 3 && (
                         <li className="text-sm text-gray-500">
-                          +{service.details.length - 3} más...
+                          +{service.details.length - 3} más…
                         </li>
                       )}
                     </ul>
 
+                    {/* CTA */}
                     <Button
                       asChild
-                      className="w-full font-semibold text-white transition hover:opacity-90"
-                      style={{ backgroundColor: "#ED2939" }}
+                      className="mt-2 w-full rounded-full bg-[#ED2939] font-semibold text-white
+                                 shadow-md transition-all hover:bg-[#d42032] hover:shadow-lg"
                     >
-                      <Link href={service.link}>Solicitar Servicio</Link>
+                      <Link
+                        href={whatsappLink}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        Solicitar este servicio
+                      </Link>
                     </Button>
                   </div>
                 </Card>

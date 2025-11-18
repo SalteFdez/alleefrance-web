@@ -1,5 +1,6 @@
 "use client"
 
+import Image from "next/image"
 import { Card } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { ShieldCheck, Heart, Plane, Calendar } from "lucide-react"
@@ -47,6 +48,22 @@ export function InsuranceSection() {
             <p className="text-xl text-white/90 max-w-2xl mx-auto">
               Viaja seguro, tranquilo y cumpliendo todos los requisitos del consulado francés.
             </p>
+
+            <div className="mt-6 flex flex-col items-center gap-3">
+              <p className="text-xs font-semibold uppercase tracking-[0.35em] text-white/60">
+                Seguro oficial
+              </p>
+              <div className="flex items-center justify-center gap-6 bg-white/10 px-6 py-3 rounded-full backdrop-blur border border-white/20">
+                <Image
+                  src="/ATV_logo-naranja-blanco.webp"
+                  alt="Aseguratuviaje.com"
+                  width={180}
+                  height={48}
+                  className="h-10 w-auto object-contain"
+                  priority
+                />
+              </div>
+            </div>
 
             {/* Línea tricolor Francia */}
             <div className="mt-6 flex justify-center gap-[3px]">

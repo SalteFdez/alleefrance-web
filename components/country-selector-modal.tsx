@@ -3,8 +3,13 @@
 import { useEffect } from "react";
 import { X } from "lucide-react";
 import { useCountry } from "@/components/country-provider";
+import type { WorkingHolidayCountryCode } from "@/lib/working-holiday-countries";
 
-export function CountrySelectorModal() {
+type CountrySelectorModalProps = {
+  onSelect?: (code: WorkingHolidayCountryCode) => void;
+};
+
+export function CountrySelectorModal({ onSelect }: CountrySelectorModalProps) {
   const {
     options,
     country,
@@ -15,6 +20,11 @@ export function CountrySelectorModal() {
     closeModal,
   } = useCountry();
   const shouldShow = hydrated && isModalOpen;
+
+  const handleSelect = (code: WorkingHolidayCountryCode) => {
+    setCountry(code);
+    onSelect?.(code);
+  };
 
   useEffect(() => {
     if (shouldShow) {
@@ -33,7 +43,7 @@ export function CountrySelectorModal() {
   }
 
   return (
-    <div className="fixed inset-0 z-[999] bg-black/60 backdrop-blur-sm flex items-center justify-center px-4 py-8">
+    <div className="fixed inset-0 z-999 bg-black/60 backdrop-blur-sm flex items-center justify-center px-4 py-8">
       <div className="relative w-full max-w-xl rounded-3xl bg-white p-6 sm:p-8 shadow-2xl">
         {hasConfirmed && (
           <button
@@ -64,14 +74,14 @@ export function CountrySelectorModal() {
             return (
               <button
                 key={option.code}
-                onClick={() => setCountry(option.code)}
+                onClick={() => handleSelect(option.code)}
                 className={[
                   "flex flex-col items-center justify-center rounded-2xl border-2 p-4 text-center transition-all",
                   "hover:-translate-y-1 hover:shadow-lg",
                   isActive ? "border-[#ED2939] shadow-lg" : "border-gray-200",
                 ].join(" ")}
               >
-                <span className="text-3xl mb-2">{option.code}</span>
+                <span className="text-3xl mb-2">{option.label}</span>
                 <span
                   className="text-xs font-semibold tracking-wide"
                   style={{ color: isActive ? "#ED2939" : "#002654" }}

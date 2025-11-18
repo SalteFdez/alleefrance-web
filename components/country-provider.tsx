@@ -1,26 +1,46 @@
 "use client";
 
 import { createContext, useContext, useEffect, useMemo, useState } from "react";
+import {
+  DEFAULT_WORKING_HOLIDAY_COUNTRY_CODE,
+  WORKING_HOLIDAY_COUNTRIES,
+  type WorkingHolidayCountryCode,
+  normalizeWorkingHolidayCountryCode,
+} from "@/lib/working-holiday-countries";
 
 const COUNTRY_STORAGE_KEY = "alleefrance-country";
 
-export const COUNTRY_OPTIONS = [
-  { code: "CL", name: "Chile" },
-  { code: "UY", name: "Uruguay" },
-  { code: "AR", name: "Argentina" },
-  { code: "EC", name: "Ecuador" },
-  { code: "MX", name: "México" },
-  { code: "CO", name: "Colombia" },
-  { code: "PE", name: "Perú" },
-  { code: "GLOBAL", name: "Global" },
+const COUNTRY_ORDER: WorkingHolidayCountryCode[] = [
+  "ar",
+  "cl",
+  "uy",
+  "ec",
+  "mx",
+  "co",
+  "pe",
+  "global",
 ];
 
-export type CountryOption = (typeof COUNTRY_OPTIONS)[number];
+export type CountryOption = {
+  code: WorkingHolidayCountryCode;
+  name: string;
+  label: string;
+};
+
+const COUNTRY_OPTIONS: CountryOption[] = COUNTRY_ORDER.map((code) => {
+  const data = WORKING_HOLIDAY_COUNTRIES[code];
+  return { code, name: data.name, label: data.label };
+});
+
+const defaultCountry =
+  COUNTRY_OPTIONS.find(
+    (option) => option.code === DEFAULT_WORKING_HOLIDAY_COUNTRY_CODE
+  ) ?? COUNTRY_OPTIONS[0];
 
 type CountryContextValue = {
   country: CountryOption;
   options: CountryOption[];
-  setCountry: (code: CountryOption["code"]) => void;
+  setCountry: (code: WorkingHolidayCountryCode) => void;
   hasConfirmed: boolean;
   hydrated: boolean;
   isModalOpen: boolean;
@@ -28,16 +48,44 @@ type CountryContextValue = {
   closeModal: () => void;
 };
 
-const defaultCountry = COUNTRY_OPTIONS[2]; // Argentina por defecto
-
 export const CountryContext = createContext<CountryContextValue | undefined>(
   undefined
 );
 
-export function CountryProvider({ children }: { children: React.ReactNode }) {
-  const [country, setCountry] = useState<CountryOption>(defaultCountry);
-  const [hasConfirmed, setHasConfirmed] = useState(false);
-  const [hydrated, setHydrated] = useState(false);
+type CountryProviderProps = {
+  children: React.ReactNode;
+  initialCountryCode?: WorkingHolidayCountryCode;
+};
+
+function getCountryOption(code?: WorkingHolidayCountryCode | null) {
+  if (!code) return undefined;
+  return COUNTRY_OPTIONS.find((option) => option.code === code);
+}
+
+function persistCountry(code: WorkingHolidayCountryCode) {
+  try {
+    if (typeof window !== "undefined" && window.localStorage) {
+      window.localStorage.setItem(COUNTRY_STORAGE_KEY, code);
+    }
+  } catch (error) {
+    console.warn("No se pudo guardar en localStorage:", error);
+  }
+}
+
+export function CountryProvider({
+  children,
+  initialCountryCode,
+}: CountryProviderProps) {
+  const lockedCode =
+    initialCountryCode && initialCountryCode !== "global"
+      ? initialCountryCode
+      : undefined;
+
+  const [country, setCountry] = useState<CountryOption>(
+    getCountryOption(initialCountryCode) ?? defaultCountry
+  );
+  const [hasConfirmed, setHasConfirmed] = useState(Boolean(lockedCode));
+  const [hydrated, setHydrated] = useState(Boolean(lockedCode));
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isClient, setIsClient] = useState(false);
 
@@ -47,24 +95,29 @@ export function CountryProvider({ children }: { children: React.ReactNode }) {
 
   useEffect(() => {
     if (!isClient) return;
+
+    if (lockedCode) {
+      persistCountry(lockedCode);
+      setHydrated(true);
+      return;
+    }
+
     try {
       if (typeof window !== "undefined" && "localStorage" in window) {
         const storage = window.localStorage;
         if (storage && typeof storage.getItem === "function") {
           const savedCode = storage.getItem(COUNTRY_STORAGE_KEY);
           if (savedCode) {
-            const savedCountry = COUNTRY_OPTIONS.find(
-              (option) => option.code === savedCode
-            );
+            const normalized = normalizeWorkingHolidayCountryCode(savedCode);
+            const savedCountry = getCountryOption(normalized);
             if (savedCountry) {
               setCountry(savedCountry);
               setHasConfirmed(true);
-            } else {
-              setIsModalOpen(true);
+              setIsModalOpen(false);
+              return;
             }
-          } else {
-            setIsModalOpen(true);
           }
+          setIsModalOpen(true);
         } else {
           setIsModalOpen(true);
         }
@@ -72,32 +125,19 @@ export function CountryProvider({ children }: { children: React.ReactNode }) {
         setIsModalOpen(true);
       }
     } catch (error) {
-      // Si hay un error al acceder a localStorage (por ejemplo, políticas de seguridad),
-      // simplemente usamos el país por defecto
       console.warn("No se pudo acceder a localStorage:", error);
       setIsModalOpen(true);
     } finally {
       setHydrated(true);
     }
-  }, [isClient]);
+  }, [isClient, lockedCode]);
 
-  const updateCountry = (code: CountryOption["code"]) => {
-    const nextCountry =
-      COUNTRY_OPTIONS.find((option) => option.code === code) ?? defaultCountry;
+  const updateCountry = (code: WorkingHolidayCountryCode) => {
+    const nextCountry = getCountryOption(code) ?? defaultCountry;
     setCountry(nextCountry);
     setHasConfirmed(true);
     setIsModalOpen(false);
-    try {
-      if (typeof window !== "undefined" && "localStorage" in window) {
-        const storage = window.localStorage;
-        if (storage && typeof storage.setItem === "function") {
-          storage.setItem(COUNTRY_STORAGE_KEY, nextCountry.code);
-        }
-      }
-    } catch (error) {
-      // Si hay un error al guardar en localStorage, simplemente lo ignoramos
-      console.warn("No se pudo guardar en localStorage:", error);
-    }
+    persistCountry(nextCountry.code);
   };
 
   const value = useMemo<CountryContextValue>(

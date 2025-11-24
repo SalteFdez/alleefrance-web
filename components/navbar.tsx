@@ -9,8 +9,10 @@ import Image from "next/image";
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [isServicesOpen, setIsServicesOpen] = useState(false);
+  const [isOtherDestinationsOpen, setIsOtherDestinationsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const servicesRef = useRef<HTMLDivElement | null>(null);
+  const otherDestinationsRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -52,6 +54,28 @@ export function Navbar() {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, [isServicesOpen]);
 
+  // Cerrar el desplegable de otros destinos en escritorio al hacer click afuera
+  useEffect(() => {
+    if (!isOtherDestinationsOpen) return;
+
+    const isDesktopView =
+      typeof window !== "undefined" &&
+      window.matchMedia("(min-width: 768px)").matches;
+    if (!isDesktopView) return;
+
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        otherDestinationsRef.current &&
+        !otherDestinationsRef.current.contains(event.target as Node)
+      ) {
+        setIsOtherDestinationsOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, [isOtherDestinationsOpen]);
+
   const navLinks = [{ href: "/#nosotros", label: "Nosotros" }];
 
   const serviceLinks = [
@@ -60,10 +84,18 @@ export function Navbar() {
     { href: "/servicios", label: "Ver Todos los Servicios", featured: true },
   ];
 
+  const otherDestinationsLinks = [
+    { href: "/working-holiday?dest=austria", label: "Austria" },
+    { href: "/working-holiday?dest=australia", label: "Australia" },
+    { href: "/working-holiday?dest=hungria", label: "Hungría" },
+    { href: "/working-holiday?dest=alemania", label: "Alemania" },
+    { href: "/working-holiday?dest=andorra", label: "Andorra" },
+    { href: "/working-holiday", label: "Ver todos los destinos", featured: true },
+  ];
+
   const otherLinks = [
-    { href: "/blog", label: "Blog" },
+    { href: "/blog/visa-estudiante-francia", label: "Visa estudiantes" },
     { href: "/working-holiday", label: "Working Holiday" },
-    { href: "/#testimonios", label: "Testimonios" },
     { href: "/#contacto", label: "Contacto" },
   ];
 
@@ -180,16 +212,76 @@ export function Navbar() {
                 )}
               </div>
 
-              {otherLinks.map((link) => (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  className="relative cursor-pointer font-medium text-white transition-all duration-300 hover:text-blue-300 group/link"
+              <Link
+                href={otherLinks[0].href}
+                className="relative cursor-pointer font-medium text-white transition-all duration-300 hover:text-blue-300 group/link"
+              >
+                {otherLinks[0].label}
+                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-300 transition-all duration-300 group-hover/link:w-full"></span>
+              </Link>
+
+              <Link
+                href={otherLinks[1].href}
+                className="relative cursor-pointer font-medium text-white transition-all duration-300 hover:text-blue-300 group/link"
+              >
+                {otherLinks[1].label}
+                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-300 transition-all duration-300 group-hover/link:w-full"></span>
+              </Link>
+
+              <div className="relative" ref={otherDestinationsRef}>
+                <button
+                  type="button"
+                  className="cursor-pointer relative flex items-center gap-1 font-medium text-white transition-all duration-300 hover:text-blue-300 group/services"
+                  onClick={() => setIsOtherDestinationsOpen((prev) => !prev)}
                 >
-                  {link.label}
-                  <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-300 transition-all duration-300 group-hover/link:w-full"></span>
-                </Link>
-              ))}
+                  Otros destinos
+                  <ChevronDown
+                    className={`w-4 h-4 transition-transform duration-300 ${
+                      isOtherDestinationsOpen ? "rotate-180" : ""
+                    } group-hover/services:translate-y-0.5`}
+                  />
+                  <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-300 transition-all duration-300 group-hover/services:w-full"></span>
+                </button>
+
+                {isOtherDestinationsOpen && (
+                  <div
+                    className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-64 backdrop-blur-md shadow-xl border border-white/20 py-2 rounded-lg animate-in fade-in slide-in-from-top-2 duration-200 pointer-events-auto"
+                    style={{ backgroundColor: "rgba(30, 58, 138, 0.95)" }}
+                  >
+                    {otherDestinationsLinks.map((link, index) => (
+                      <Link
+                        key={link.href}
+                        href={link.href}
+                        className="relative block px-4 py-2.5 transition-all duration-300 font-medium overflow-hidden group/item cursor-pointer"
+                        style={{
+                          color: link.featured ? "#93c5fd" : "#ffffff",
+                          fontWeight: link.featured ? "700" : "500",
+                          animationDelay: `${index * 50}ms`,
+                        }}
+                        onClick={() => {
+                          setIsOtherDestinationsOpen(false);
+                        }}
+                      >
+                        <span className="relative z-10 transition-all duration-300 group-hover/item:translate-x-2 inline-block">
+                          {link.label}
+                        </span>
+                        <span className="absolute inset-0 bg-linear-to-r from-blue-400/25 to-transparent -translate-x-full group-hover/item:translate-x-0 transition-transform duration-300"></span>
+                        {!link.featured && (
+                          <span className="absolute left-0 top-0 bottom-0 w-1 bg-blue-300 scale-y-0 group-hover/item:scale-y-100 transition-transform duration-300 origin-center"></span>
+                        )}
+                      </Link>
+                    ))}
+                  </div>
+                )}
+              </div>
+
+              <Link
+                href={otherLinks[2].href}
+                className="relative cursor-pointer font-medium text-white transition-all duration-300 hover:text-blue-300 group/link"
+              >
+                {otherLinks[2].label}
+                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-300 transition-all duration-300 group-hover/link:w-full"></span>
+              </Link>
             </div>
           </div>
 
@@ -278,20 +370,81 @@ export function Navbar() {
                 )}
               </div>
 
-              {otherLinks.map((link, index) => (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  onClick={() => setIsOpen(false)}
-                  className="relative font-medium py-3 px-4 text-white transition-all duration-300 hover:text-blue-300 hover:bg-white/10 rounded-lg group/mobile"
-                  style={{
-                    animationDelay: `${(navLinks.length + index) * 50}ms`,
-                  }}
+              <Link
+                href={otherLinks[0].href}
+                onClick={() => setIsOpen(false)}
+                className="relative font-medium py-3 px-4 text-white transition-all duration-300 hover:text-blue-300 hover:bg-white/10 rounded-lg group/mobile"
+                style={{
+                  animationDelay: `${(navLinks.length + 0) * 50}ms`,
+                }}
+              >
+                <span className="relative z-10">{otherLinks[0].label}</span>
+                <span className="absolute left-0 top-0 bottom-0 w-1 bg-blue-300 scale-y-0 group-hover/mobile:scale-y-100 transition-transform duration-300 rounded-l-lg origin-center"></span>
+              </Link>
+
+              <Link
+                href={otherLinks[1].href}
+                onClick={() => setIsOpen(false)}
+                className="relative font-medium py-3 px-4 text-white transition-all duration-300 hover:text-blue-300 hover:bg-white/10 rounded-lg group/mobile"
+                style={{
+                  animationDelay: `${(navLinks.length + 1) * 50}ms`,
+                }}
+              >
+                <span className="relative z-10">{otherLinks[1].label}</span>
+                <span className="absolute left-0 top-0 bottom-0 w-1 bg-blue-300 scale-y-0 group-hover/mobile:scale-y-100 transition-transform duration-300 rounded-l-lg origin-center"></span>
+              </Link>
+
+              <div className="py-2">
+                <button
+                  type="button"
+                  onClick={() => setIsOtherDestinationsOpen((prev) => !prev)}
+                  className="flex items-center justify-between w-full font-medium py-3 px-4 text-white hover:text-blue-200 hover:bg-white/10 rounded-lg transition-all duration-300"
                 >
-                  <span className="relative z-10">{link.label}</span>
-                  <span className="absolute left-0 top-0 bottom-0 w-1 bg-blue-300 scale-y-0 group-hover/mobile:scale-y-100 transition-transform duration-300 rounded-l-lg origin-center"></span>
-                </Link>
-              ))}
+                  Otros destinos
+                  <ChevronDown
+                    className={`w-4 h-4 transition-transform duration-300 ${
+                      isOtherDestinationsOpen ? "rotate-180" : ""
+                    }`}
+                  />
+                </button>
+                {isOtherDestinationsOpen && (
+                  <div className="mt-2 ml-4 flex flex-col gap-1 animate-in fade-in slide-in-from-left duration-200">
+                    {otherDestinationsLinks.map((link, index) => (
+                      <Link
+                        key={link.href}
+                        href={link.href}
+                        onClick={() => {
+                          setIsOpen(false);
+                          setIsOtherDestinationsOpen(false);
+                        }}
+                        className="relative py-2.5 px-4 rounded-lg transition-all duration-300 group/mobile-item"
+                        style={{
+                          color: link.featured ? "#93c5fd" : "#e5e7eb",
+                          fontWeight: link.featured ? "700" : "500",
+                          animationDelay: `${index * 50}ms`,
+                        }}
+                      >
+                        <span className="relative z-10 transition-all duration-300 group-hover/mobile-item:translate-x-2 inline-block">
+                          {link.label}
+                        </span>
+                        <span className="absolute inset-0 bg-blue-400/15 rounded-lg scale-x-0 group-hover/mobile-item:scale-x-100 transition-transform duration-300 origin-left"></span>
+                      </Link>
+                    ))}
+                  </div>
+                )}
+              </div>
+
+              <Link
+                href={otherLinks[2].href}
+                onClick={() => setIsOpen(false)}
+                className="relative font-medium py-3 px-4 text-white transition-all duration-300 hover:text-blue-300 hover:bg-white/10 rounded-lg group/mobile"
+                style={{
+                  animationDelay: `${(navLinks.length + 2) * 50}ms`,
+                }}
+              >
+                <span className="relative z-10">{otherLinks[2].label}</span>
+                <span className="absolute left-0 top-0 bottom-0 w-1 bg-blue-300 scale-y-0 group-hover/mobile:scale-y-100 transition-transform duration-300 rounded-l-lg origin-center"></span>
+              </Link>
 
               <Button
                 asChild

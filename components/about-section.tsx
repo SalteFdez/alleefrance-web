@@ -36,7 +36,7 @@ export function AboutSection() {
 
       <div className="relative max-w-7xl mx-auto px-6">
         <AnimateOnScroll direction="right" delay={0.2}>
-          <div className="hidden sm:block absolute right-0 -top-72 w-[340px] md:w-[420px] lg:w-[520px] pointer-events-none z-50">
+          <div className="hidden sm:block absolute right-0 -top-72 w-[340px] md:w-[420px] lg:w-[520px] pointer-events-none z-40">
             <img
               src="/mapitafrancia.png"
               alt="Mapa de Francia"
@@ -46,7 +46,7 @@ export function AboutSection() {
         </AnimateOnScroll>
 
         <AnimateOnScroll direction="right" delay={0.2}>
-          <div className="flex sm:hidden justify-end -mt-48 mb-16 pr-8 z-50">
+          <div className="flex sm:hidden justify-end -mt-48 mb-16 pr-8 z-40">
             <img
               src="/mapitafrancia.png"
               alt="Mapa de Francia"

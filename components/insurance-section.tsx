@@ -118,7 +118,7 @@ export function InsuranceSection() {
           <div className="relative">
             <AnimateOnScroll direction="right" delay={0.2}>
               {/* Imagen con difuminado */}
-              <div className="relative h-[180px] md:h-[220px] lg:h-[250px] w-full rounded-2xl overflow-hidden shadow-2xl mb-4">
+              <div className="relative h-[180px] md:h-[220px] lg:h-[300px] w-full rounded-2xl overflow-hidden shadow-2xl mb-4">
                 {/* Overlay degradado para difuminar el borde izquierdo */}
                 <div className="absolute inset-0 bg-gradient-to-r from-[#1E3A8A] via-transparent to-transparent z-10 opacity-90 sm:opacity-70" />
                 
@@ -158,7 +158,7 @@ export function InsuranceSection() {
 
         {/* CTA */}
         <AnimateOnScroll direction="fade" delay={0.4}>
-          <div className="text-center">
+          <div className="text-center mb-6">
             <Button
               size="lg"
               className="text-white font-semibold tracking-wide text-sm md:text-base px-8 md:px-10 py-4 md:py-5 rounded-full

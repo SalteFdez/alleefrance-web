@@ -61,7 +61,7 @@ export function HeroSection() {
         </div>
 
         {/* Content */}
-        <div className="relative z-10 max-w-7xl mx-auto px-6 pt-32 pb-40 text-center">
+        <div className="relative z-10 max-w-7xl mx-auto px-6 pt-40 lg:pt-48 pb-40 text-center">
           <motion.h1
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}

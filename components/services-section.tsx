@@ -35,6 +35,15 @@ const featuredServices = [
     image: "/titre-de-séjour.png",
     link: "/servicios/titre-de-sejour",
   },
+  { 
+    id:"necesitas-aseoria",
+    title: "Necesitas Asesoría",
+    price: "Desde 30€",
+    description: "Resuelve dudas específicas sobre migración en Francia con nuestros expertos.",
+    features: ["Asesoría express (30 min): Dudas específicas - 30€", "Asesoría completa (1h): Revisión integral con resumen escrito - 50€"],
+    image: "/servicio_asesoria.png",
+    link: "https://wa.me/33601526171",
+  },
 ]
 
 const otherServices = [
@@ -92,58 +101,16 @@ export function ServicesSection() {
                 className="w-full bg-black text-white border-2 border-white rounded-lg py-3 font-semibold uppercase tracking-wide hover:bg-white hover:text-black transition-all duration-300 text-sm"
                 asChild
               >
-                <Link href={service.link}>MÁS INFORMACIÓN</Link>
+                {service.id === "necesitas-aseoria" ? (
+                  <a href={service.link} target="_blank" rel="noopener noreferrer">CONTACTAR</a>
+                ) : (
+                  <Link href={service.link}>MÁS INFORMACIÓN</Link>
+                )}
               </Button>
               </div>
             </AnimateOnScroll>
           ))}
 
-          {/* Other Services */}
-          {otherServices.map((service, index) => {
-            const serviceIndex = featuredServices.length + index
-            const Icon = service.icon
-            return (
-              <AnimateOnScroll key={index} direction="up" delay={serviceIndex * 0.1}>
-                <Card className="p-6 bg-white hover:shadow-xl transition-all duration-300 hover:scale-105">
-                <div className="space-y-4">
-                  <div
-                    className="w-14 h-14 rounded-lg flex items-center justify-center"
-                    style={{ backgroundColor: "rgba(30, 58, 138, 0.1)" }}
-                  >
-                    <Icon className="w-7 h-7" style={{ color: "#1e3a8a" }} />
-                  </div>
-
-                  <h3 className="text-xl font-bold" style={{ color: "#002654" }}>
-                    {service.title}
-                  </h3>
-
-                  <p className="text-2xl font-bold" style={{ color: "#ED2939" }}>
-                    {service.price}
-                  </p>
-
-                  <p className="text-gray-600 text-sm leading-relaxed">{service.description}</p>
-
-                  <ul className="space-y-2">
-                    {service.features.map((feature, idx) => (
-                      <li key={idx} className="text-sm text-gray-600 flex items-start gap-2">
-                        <span style={{ color: "#ED2939" }}>•</span>
-                        {feature}
-                      </li>
-                    ))}
-                  </ul>
-
-                  <Button
-                    className="w-full text-white font-semibold hover:scale-105 transition-transform duration-300"
-                    style={{ backgroundColor: "#ED2939" }}
-                    asChild
-                  >
-                    <Link href={service.link}>Más información</Link>
-                  </Button>
-                </div>
-              </Card>
-              </AnimateOnScroll>
-            )
-          })}
         </div>
 
         <AnimateOnScroll direction="fade" delay={0.4}>

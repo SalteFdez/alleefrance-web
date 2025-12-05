@@ -42,7 +42,7 @@ export function HeroSection() {
   return (
     <section id="inicio" className="relative overflow-hidden">
       {/* Background with Paris Image and Blue Overlay */}
-      <div className="relative min-h-[600px] lg:min-h-[700px] pt-16" style={{ backgroundColor: "#1e3a8a" }}>
+      <div className="relative min-h-[700px] lg:min-h-[850px] xl:min-h-[850px] pt-16" style={{ backgroundColor: "#1e3a8a" }}>
         {/* Background Image with Overlay */}
         <div className="absolute inset-0">
           <Image

@@ -42,7 +42,7 @@ export function HeroSection() {
   return (
     <section id="inicio" className="relative overflow-hidden">
       {/* Background with Paris Image and Blue Overlay */}
-      <div className="relative min-h-[600px] lg:min-h-[700px] pt-16" style={{ backgroundColor: "#1e3a8a" }}>
+      <div className="relative min-h-[700px] lg:min-h-[850px] xl:min-h-[870px] pt-16" style={{ backgroundColor: "#1e3a8a" }}>
         {/* Background Image with Overlay */}
         <div className="absolute inset-0">
           <Image
@@ -61,7 +61,7 @@ export function HeroSection() {
         </div>
 
         {/* Content */}
-        <div className="relative z-10 max-w-7xl mx-auto px-6 pt-32 pb-40 text-center">
+        <div className="relative z-10 max-w-7xl mx-auto px-6 pt-40 lg:pt-48 pb-40 text-center">
           <motion.h1
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -128,7 +128,7 @@ export function HeroSection() {
           initial={{ opacity: 0, x: -50 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, delay: 0.6, ease: "easeOut" }}
-          className="hidden sm:block sm:bottom-2 absolute left-4 lg:left-16 z-20"
+          className="hidden sm:block sm:bottom-6 absolute left-4 lg:left-16 z-20"
         >
           <div className="bg-white/95 backdrop-blur-sm rounded-2xl px-4 sm:px-6 py-4 sm:py-5">
             <div className="flex flex-col gap-1.5 sm:gap-2">

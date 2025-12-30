@@ -100,7 +100,7 @@ export function ServicesSection() {
                 />
 
                 {/* Overlay Oscuro al hacer Hover (Mejora lectura del botón) - Solo en desktop */}
-                <div className="absolute inset-0 bg-linear-to-t from-black via-black/80 to-black/30 opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-300" />
+                <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/50 to-transparent opacity-70 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-300" />
 
                 {/* Texto descriptivo en hover */}
                 <div className="absolute inset-x-6 bottom-24 z-10 opacity-0 transition-opacity duration-300 md:group-hover:opacity-100 pointer-events-none">

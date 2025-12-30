@@ -1,11 +1,11 @@
-"use client"
+"use client";
 
-import { Card } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
-import { ArrowRight, Sparkles } from "lucide-react" // Agregué iconos para los botones
-import Link from "next/link"
-import Image from "next/image"
-import { AnimateOnScroll } from "@/components/animate-on-scroll"
+import { Card } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { ArrowRight, Sparkles } from "lucide-react";
+import Link from "next/link";
+import Image from "next/image";
+import { AnimateOnScroll } from "@/components/animate-on-scroll";
 
 const featuredServices = [
   {
@@ -13,31 +13,44 @@ const featuredServices = [
     title: "Visa Salarié",
     image: "/visa-salarie.png",
     link: "/servicios/visas-trabajo",
+    description:
+      "Gestión completa para tu visa de trabajo y preparación del expediente.",
   },
   {
     id: "working-holiday",
     title: "Working Holiday",
     image: "/working-holiday.png",
     link: "/working-holiday",
+    description:
+      "Acompañamiento integral para vivir y trabajar en Francia por una temporada.",
   },
   {
     id: "titre-de-sejour",
     title: "Titre de Séjour",
     image: "/titre-de-séjour.png",
     link: "/servicios/titre-de-sejour",
+    description:
+      "Regulariza tu residencia con asesoría personalizada y seguimiento.",
   },
-  { 
-    id:"necesitas-aseoria",
+  {
+    id: "necesitas-aseoria",
     title: "Necesitas Asesoría",
     image: "/servicio_asesoria.png",
     link: "https://wa.me/33601526171",
+    description: "Contactanos por WhatsApp y respondemos tus dudas en minutos.",
   },
-]
+];
 
 export function ServicesSection() {
   return (
-    <section id="servicios" className="py-24 relative overflow-hidden" style={{ backgroundColor: "#1e3a8a" }}>
-      
+    <section
+      id="servicios"
+      className="py-24 relative overflow-hidden"
+      style={{
+        backgroundImage:
+          "linear-gradient(180deg, #1e3a8a 0%, #1e3a8a 70%, #002590 100%)",
+      }}
+    >
       {/* Curved Wave Top */}
       <div className="absolute top-0 left-0 right-0 overflow-hidden leading-none z-0">
         <svg
@@ -46,12 +59,14 @@ export function ServicesSection() {
           viewBox="0 0 1200 120"
           preserveAspectRatio="none"
         >
-          <path d="M0,0 C300,100 900,100 1200,0 L1200,120 L0,120 Z" fill="white" />
+          <path
+            d="M0,0 C300,100 900,100 1200,0 L1200,120 L0,120 Z"
+            fill="white"
+          />
         </svg>
       </div>
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
-        
         {/* Header de Sección */}
         <AnimateOnScroll direction="fade" delay={0}>
           <div className="text-center mb-16 space-y-4">
@@ -59,7 +74,8 @@ export function ServicesSection() {
               Nuestros Servicios
             </h2>
             <p className="text-blue-200 max-w-2xl mx-auto text-lg">
-              Elige el trámite que necesitas y déjanos guiarte en tu camino hacia Francia.
+              Elige el trámite que necesitas y déjanos guiarte en tu camino
+              hacia Francia.
             </p>
           </div>
         </AnimateOnScroll>
@@ -67,11 +83,13 @@ export function ServicesSection() {
         {/* Grid de Servicios (Flyers) */}
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
           {featuredServices.map((service, index) => (
-            <AnimateOnScroll key={service.id} direction="up" delay={index * 0.1}>
-              
+            <AnimateOnScroll
+              key={service.id}
+              direction="up"
+              delay={index * 0.1}
+            >
               {/* Card Container unificado */}
-              <div className="group relative w-full aspect-[3/4] rounded-2xl overflow-hidden bg-white shadow-2xl transition-all duration-500 hover:shadow-blue-900/50 hover:-translate-y-2">
-                
+              <div className="group relative w-full aspect-3/4 rounded-2xl overflow-hidden bg-white shadow-2xl transition-all duration-500 hover:shadow-blue-900/50 hover:-translate-y-2 cursor-pointer">
                 {/* Imagen con Zoom suave */}
                 <Image
                   src={service.image}
@@ -82,7 +100,14 @@ export function ServicesSection() {
                 />
 
                 {/* Overlay Oscuro al hacer Hover (Mejora lectura del botón) - Solo en desktop */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-300" />
+                <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/50 to-transparent opacity-70 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-300" />
+
+                {/* Texto descriptivo en hover */}
+                <div className="absolute inset-x-6 bottom-24 z-10 opacity-0 transition-opacity duration-300 md:group-hover:opacity-100 pointer-events-none">
+                  <p className="text-base font-semibold text-white/95 drop-shadow-sm">
+                    {service.description}
+                  </p>
+                </div>
 
                 {/* Botón que desliza desde abajo - Visible en mobile, hover en desktop */}
                 <div className="absolute inset-x-6 bottom-6 translate-y-0 opacity-100 md:translate-y-8 md:opacity-0 md:group-hover:translate-y-0 md:group-hover:opacity-100 transition-all duration-300 ease-out">
@@ -91,19 +116,26 @@ export function ServicesSection() {
                     asChild
                   >
                     {service.id === "necesitas-aseoria" ? (
-                      <a href={service.link} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-2">
+                      <a
+                        href={service.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center justify-center gap-2"
+                      >
                         CONTACTAR
                         <ArrowRight className="w-4 h-4 md:w-5 md:h-5" />
                       </a>
                     ) : (
-                      <Link href={service.link} className="flex items-center justify-center gap-2">
+                      <Link
+                        href={service.link}
+                        className="flex items-center justify-center gap-2"
+                      >
                         MÁS INFORMACIÓN
                         <ArrowRight className="w-4 h-4 md:w-5 md:h-5" />
                       </Link>
                     )}
                   </Button>
                 </div>
-
               </div>
             </AnimateOnScroll>
           ))}
@@ -127,7 +159,6 @@ export function ServicesSection() {
           </div>
         </AnimateOnScroll>
       </div>
-
     </section>
-  )
+  );
 }

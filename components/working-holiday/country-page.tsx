@@ -10,6 +10,7 @@ import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { CountrySelectorModal } from "@/components/country-selector-modal";
 import { CountryIndicator } from "@/components/country-indicator";
+import { FAQSection } from "@/components/faq-section";
 import {
   Plane,
   Clock,
@@ -30,6 +31,7 @@ import {
   type WorkingHolidayCountryCode,
 } from "@/lib/working-holiday-countries";
 import { useCountry } from "@/components/country-provider";
+import { getFaqsByCategories } from "@/data/faqs";
 
 type WorkingHolidayCountryPageProps = {
   config: WorkingHolidayCountryConfig;
@@ -152,6 +154,22 @@ export function WorkingHolidayCountryPage({
 
   const whatsappConsultLink =
     "https://wa.me/33601526171?text=Hola%20All%C3%A9e%20France,%20quiero%20saber%20qu%C3%A9%20visa%20me%20conviene%20para%20Francia.";
+  const workingHolidayFaqs = getFaqsByCategories([
+    "Errores Frecuentes",
+    "Seguros",
+    "Trabajo",
+    "WH: General",
+    "WH: Argentina",
+    "WH: Chile",
+  ]);
+  const workingHolidayFaqCategories = [
+    "Errores Frecuentes",
+    "Seguros",
+    "Trabajo",
+    "WH: General",
+    "WH: Argentina",
+    "WH: Chile",
+  ];
 
   return (
     <div className="min-h-screen bg-white w-full overflow-x-hidden">
@@ -619,6 +637,13 @@ export function WorkingHolidayCountryPage({
             </div>
           </div>
         </section>
+
+        <FAQSection
+          title="Preguntas frecuentes sobre Working Holiday"
+          description="Resolvemos dudas clave sobre requisitos, seguros, trabajo y errores frecuentes en la postulación."
+          allowedCategories={workingHolidayFaqCategories}
+          data={workingHolidayFaqs}
+        />
 
         <section className="py-16 px-6 bg-[#0F2354] text-white">
           <div className="max-w-5xl mx-auto text-center">

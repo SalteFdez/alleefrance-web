@@ -11,7 +11,6 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 import { Card } from "@/components/ui/card";
-import { imageConfigDefault } from "next/dist/shared/lib/image-config";
 
 const otherDestinations = [
   { name: "Alemania", image: "/countries/Alemania.webp" },

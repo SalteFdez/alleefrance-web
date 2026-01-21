@@ -3,10 +3,7 @@
 import { useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { CountryProvider, useCountry } from "@/components/country-provider";
-import { WorkingHolidayCountryPage } from "@/components/working-holiday/country-page";
-import { WORKING_HOLIDAY_COUNTRIES } from "@/lib/working-holiday-countries";
-
-const globalConfig = WORKING_HOLIDAY_COUNTRIES.global;
+import { WorkingHolidayGlobalLanding } from "@/components/working-holiday/global-landing";
 
 function WorkingHolidayLandingInner() {
   const router = useRouter();
@@ -19,7 +16,7 @@ function WorkingHolidayLandingInner() {
   }, [country.code, hasConfirmed, hydrated, router]);
 
   return (
-    <WorkingHolidayCountryPage config={globalConfig} showCountryGrid />
+    <WorkingHolidayGlobalLanding />
   );
 }
 

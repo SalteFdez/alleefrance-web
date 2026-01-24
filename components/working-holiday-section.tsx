@@ -20,8 +20,8 @@ export function WorkingHolidaySection() {
 
       <div className="relative flex min-h-[520px] items-center overflow-hidden md:min-h-[600px]">
         <Image
-          src="/Fondo-WH.png"
-          alt="Working Holiday Francia"
+          src="/Fondo-WH.webp"
+          alt="Jóvenes latinoamericanos disfrutando Working Holiday en Francia - Visa vacaciones y trabajo"
           fill
           priority
           className="absolute inset-0 z-0 object-cover object-[75%_top] contrast-105 saturate-105 sm:object-[70%_top] lg:object-[center_right]"

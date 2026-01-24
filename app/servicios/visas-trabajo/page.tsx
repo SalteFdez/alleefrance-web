@@ -45,7 +45,7 @@ export default function VisasTrabajoPage() {
         className="pt-32 pb-16 px-6 relative overflow-hidden"
         style={{
           backgroundColor: "#002654",
-          backgroundImage: "url('/visas-trabajo-bg.jpg')",
+          backgroundImage: "url('/visas-trabajo-bg.webp')",
           backgroundSize: "cover",
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",

@@ -62,10 +62,11 @@ export function InsuranceSection() {
               <div className="h-4 w-[1px] bg-white/30"></div>
               <Image
                   src="/ATV_logo-naranja-blanco.webp"
-                  alt="Aseguratuviaje"
+                  alt="Asegura tu Viaje - Partner oficial de seguros de viaje para visa Schengen Francia"
                   width={100}
                   height={25}
-                  className="h-5 md:h-6 w-auto object-contain brightness-0 invert" 
+                  className="h-5 md:h-6 w-auto object-contain brightness-0 invert"
+                  loading="lazy"
                 />
             </div>
           </div>
@@ -130,10 +131,11 @@ export function InsuranceSection() {
                 {/* Imagen: Sugiero cambiar a una foto de viajero "backpacker" o mirando un mapa */}
                 <div className="relative h-[280px] md:h-[320px] lg:h-[360px] w-full">
                    <Image
-                    src="/twopersonhappy.png" // Reemplazar con imagen de viajero joven
-                    alt="Viajeros en Europa"
+                    src="/twopersonhappy.webp"
+                    alt="Viajeros latinoamericanos felices en Europa con seguro de viaje Schengen"
                     fill
                     className="object-cover transition-transform duration-700 group-hover:scale-105"
+                    loading="lazy"
                   />
                 </div>
 

@@ -24,7 +24,7 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "/visas-trabajo-bg.jpg",
+        url: "/visas-trabajo-bg.webp",
         width: 1200,
         height: 630,
         alt: "Visa de Trabajo Francia - Allée France",

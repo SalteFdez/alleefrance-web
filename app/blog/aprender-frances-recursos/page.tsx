@@ -9,7 +9,7 @@ export const metadata: Metadata = {
     "Combiná apps, clases, inmersión y exámenes oficiales para alcanzar el nivel B1/B2 que exigen las visas francesas en menos de 9 meses.",
 }
 
-const heroImage = "/person-learning-french-language.jpg"
+const heroImage = "/person-learning-french-language.webp"
 const pillars = [
   {
     title: "Input diario",

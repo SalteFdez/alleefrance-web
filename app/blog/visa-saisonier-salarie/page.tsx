@@ -9,7 +9,7 @@ export const metadata: Metadata = {
     "Checklist completa para postular a la visa Saisonier o Salarié en Francia: requisitos, contrato, plazos, documentación y consejos prácticos.",
 }
 
-const heroImage = "/seasonal-worker-in-french-vineyard.jpg"
+const heroImage = "/seasonal-worker-in-french-vineyard.webp"
 const timeline = [
   { month: "Mes 1", detail: "Definí sector, región y contactos. Prepará CV/Carta en francés y empezá a enviar candidaturas." },
   { month: "Mes 2", detail: "Cerrá contrato + promesa de empleo, reuní documentación personal y pedí turno consular." },

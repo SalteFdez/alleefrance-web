@@ -7,7 +7,7 @@ import { AnimateOnScroll } from "@/components/animate-on-scroll"
 import { motion } from "framer-motion"
 
 
-const heroImage = "/happy-travelers-in-france.jpg"
+const heroImage = "/Fondo-WH.webp"
 const checklist = [
   "Pasaporte argentino con validez mínima de 12 meses",
   "Certificado de antecedentes penales (con apostilla) emitido hace menos de 3 meses",

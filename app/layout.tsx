@@ -63,7 +63,7 @@ export const metadata: Metadata = {
       "Expertos en visas Francia: Salarié, Saisonnier, Working Holiday y Estudiante. +700 casos exitosos desde LATAM.",
     images: [
       {
-        url: "/hero-lyon.jpg",
+        url: "/hero-lyon.webp",
         width: 1200,
         height: 630,
         alt: "Allée France - Asesoría Migratoria para Francia",
@@ -75,7 +75,7 @@ export const metadata: Metadata = {
     title: "Allée France | Asesoría Migratoria Francia",
     description:
       "Expertos en visas Francia: Salarié, Saisonnier, Working Holiday y Estudiante. +700 casos exitosos.",
-    images: ["/hero-lyon.jpg"],
+    images: ["/hero-lyon.webp"],
   },
   alternates: {
     canonical: "https://alleefrance.com",
@@ -114,7 +114,7 @@ export default function RootLayout({
               name: "Allée France",
               alternateName: "Allée France Lyon",
               url: "https://alleefrance.com",
-              logo: "https://alleefrance.com/logo-AF.png",
+              logo: "https://alleefrance.com/logo-AF.webp",
               description:
                 "Asesoría migratoria especializada en Francia para latinoamericanos. Expertos en visas de trabajo, estudios, Working Holiday y permisos de residencia.",
               foundingDate: "2023",
@@ -160,7 +160,7 @@ export default function RootLayout({
               "@type": "ProfessionalService",
               "@id": "https://alleefrance.com/#localbusiness",
               name: "Allée France - Asesoría Migratoria",
-              image: "https://alleefrance.com/logo-AF.png",
+              image: "https://alleefrance.com/logo-AF.webp",
               url: "https://alleefrance.com",
               telephone: "+33601526171",
               priceRange: "€€",

@@ -11,39 +11,43 @@ export function BlogSection() {
 
   const blogPosts = [
     {
-      title: "Visa Saisonier o Salarié: Guía Completa 2024",
+      title: "Visa Saisonnier o Salarié: Guía Completa 2025",
       excerpt:
         "Checklist de requisitos, cronograma y tips para conseguir un contrato temporal sin rechazos en el consulado.",
-      date: "15 Mar 2024",
+      date: "15 Ene 2025",
       readTime: "9 min",
-      image: "/seasonal-worker-in-french-vineyard.jpg",
+      image: "/seasonal-worker-in-french-vineyard.webp",
+      alt: "Trabajador estacional en viñedo francés - Guía visa Saisonnier y Salarié Francia",
       slug: "visa-saisonier-salarie",
     },
     {
-      title: "Working Holiday Francia: Checklist para Argentinos 2024",
+      title: "Working Holiday Francia: Checklist para Argentinos 2025",
       excerpt:
         "Documentos, presupuesto y plan de llegada para aprovechar los cupos Working Holiday sin contratiempos.",
-      date: "8 Mar 2024",
+      date: "10 Ene 2025",
       readTime: "8 min",
-      image: "/french-work-visa-documents.jpg",
+      image: "/french-work-visa-documents.webp",
+      alt: "Documentos para visa Working Holiday Francia - Checklist completo para argentinos",
       slug: "working-holiday-francia",
     },
     {
       title: "Visa de Estudiante: Admisión, Campus France y Consulado",
       excerpt:
         "Roadmap para armar tu dossier, financiarte y activar tu visa VLS-TS Étudiant al llegar a Francia.",
-      date: "1 Mar 2024",
+      date: "5 Ene 2025",
       readTime: "10 min",
-      image: "/student-studying-in-paris.jpg",
+      image: "/student-studying-in-paris.webp",
+      alt: "Estudiante latinoamericano estudiando en París Francia - Guía visa estudiante",
       slug: "visa-estudiante-francia",
     },
     {
       title: "Aprender Francés: Recursos y Métodos para Progresar Rápido",
       excerpt:
         "Plan de 9 meses combinando apps, clases e inmersión para lograr el nivel B1/B2 que exigen las visas.",
-      date: "22 Feb 2024",
+      date: "2 Ene 2025",
       readTime: "7 min",
-      image: "/person-learning-french-language.jpg",
+      image: "/person-learning-french-language.webp",
+      alt: "Persona aprendiendo francés - Recursos y métodos para nivel B1 B2 visa Francia",
       slug: "aprender-frances-recursos",
     },
   ];
@@ -90,8 +94,10 @@ export function BlogSection() {
                   <div className="relative h-48 overflow-hidden">
                     <img
                       src={post.image || "/placeholder.svg"}
-                      alt={post.title}
+                      alt={post.alt}
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                      loading="lazy"
+                      decoding="async"
                     />
                   </div>
 

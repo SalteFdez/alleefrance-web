@@ -68,9 +68,10 @@ export function OtherDestinationsCarousel() {
                 {destination.image ? (
                   <Image
                     src={destination.image}
-                    alt={`Destino ${destination.name}`}
+                    alt={`Working Holiday ${destination.name} - Destino para latinoamericanos`}
                     fill
                     className="object-cover"
+                    loading="lazy"
                   />
                 ) : (
                   <div className="absolute inset-0 bg-linear-to-br from-blue-400/30 via-blue-500/10 to-indigo-500/20" />

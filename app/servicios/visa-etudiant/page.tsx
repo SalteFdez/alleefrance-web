@@ -49,7 +49,7 @@ export default function VisaEtudiantPage() {
         className="pt-32 pb-16 px-6 relative overflow-hidden"
         style={{
           backgroundColor: "#002654",
-          backgroundImage: "url('/student-studying-in-paris.jpg')",
+          backgroundImage: "url('/student-studying-in-paris.webp')",
           backgroundSize: "cover",
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",

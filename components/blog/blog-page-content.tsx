@@ -99,8 +99,10 @@ export function BlogPageContent({ posts, categories }: BlogPageContentProps) {
                   <div className="relative h-48 overflow-hidden">
                     <img
                       src={post.image || "/placeholder.svg"}
-                      alt={post.title}
+                      alt={`${post.title} - Blog Allée France sobre migración a Francia`}
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                      loading="lazy"
+                      decoding="async"
                     />
                     <div
                       className="absolute top-4 left-4 px-3 py-1 rounded-full text-xs font-semibold text-white"

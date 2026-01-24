@@ -45,7 +45,7 @@ export function HeroSection() {
         {/* Background Image with Overlay */}
         <div className="absolute inset-0">
           <Image
-            src="/hero-lyon.jpg"
+            src="/hero-lyon.webp"
             alt="Vista de Lyon, Francia - Allée France te acompaña en tu proyecto migratorio"
             fill
             className="object-cover object-center"

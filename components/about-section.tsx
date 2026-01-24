@@ -39,9 +39,11 @@ export function AboutSection() {
         <AnimateOnScroll direction="right" delay={0.2}>
           <div className="hidden sm:block absolute -right-12 md:-right-16 lg:-right-20 -top-72 w-[340px] md:w-[420px] lg:w-[520px] pointer-events-none z-40">
             <img
-              src="/mapitafrancia.png"
-              alt="Mapa de Francia"
+              src="/mapitafrancia.webp"
+              alt="Mapa de Francia con las principales ciudades para emigrar: París, Lyon, Marsella"
               className="w-full h-auto drop-shadow-2xl"
+              loading="lazy"
+              decoding="async"
             />
           </div>
         </AnimateOnScroll>
@@ -49,9 +51,11 @@ export function AboutSection() {
         <AnimateOnScroll direction="right" delay={0.2}>
           <div className="flex sm:hidden justify-end -mt-48 mb-16 pr-4 z-40">
             <img
-              src="/mapitafrancia.png"
-              alt="Mapa de Francia"
+              src="/mapitafrancia.webp"
+              alt="Mapa de Francia con las principales ciudades para emigrar: París, Lyon, Marsella"
               className="w-80 h-auto drop-shadow-xl translate-x-16"
+              loading="lazy"
+              decoding="async"
             />
           </div>
         </AnimateOnScroll>
@@ -191,7 +195,7 @@ export function AboutSection() {
               >
                 <Image
                   src="/professional-consultant-portrait-photo.jpg"
-                  alt="Jio - Consultor experto de Allée France"
+                  alt="Jio - Consultor migratorio experto en visas Francia, fundador de Allée France Lyon"
                   width={960}
                   height={1200}
                   className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"

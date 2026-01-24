@@ -32,12 +32,12 @@ export function Footer() {
             <Link href="/" className="inline-flex items-center gap-3 group">
               <div className="relative h-12 sm:h-14 w-auto transition-transform duration-300 group-hover:scale-105">
                 <Image
-                  src="/logo-AF.png"
-                  alt="Allée France Logo"
+                  src="/logo-AF.webp"
+                  alt="Allée France - Asesoría Migratoria Francia para Latinoamericanos"
                   width={140}
                   height={56}
                   className="h-full w-auto object-contain"
-                  priority
+                  loading="lazy"
                 />
               </div>
             </Link>

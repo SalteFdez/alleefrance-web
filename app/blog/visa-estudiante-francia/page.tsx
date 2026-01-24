@@ -9,7 +9,7 @@ export const metadata: Metadata = {
     "Guía paso a paso para armar tu dossier de admisión, superar Campus France y obtener la visa VLS-TS Étudiant sin demoras.",
 }
 
-const heroImage = "/student-studying-in-paris.jpg"
+const heroImage = "/student-studying-in-paris.webp"
 const milestones = [
   {
     title: "Selección de programa",

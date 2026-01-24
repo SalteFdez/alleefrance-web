@@ -11,33 +11,37 @@ const featuredServices = [
   {
     id: "visa-salarie",
     title: "Visa Salarié",
-    image: "/visa-salarie.png",
+    image: "/visa-salarie.webp",
     link: "/servicios/visas-trabajo",
     description:
       "Gestión completa para tu visa de trabajo y preparación del expediente.",
+    alt: "Servicio de Visa Salarié Francia - Contrato de trabajo CDI y CDD para extranjeros",
   },
   {
     id: "working-holiday",
     title: "Working Holiday",
-    image: "/working-holiday.png",
+    image: "/working-holiday.webp",
     link: "/working-holiday",
     description:
       "Acompañamiento integral para vivir y trabajar en Francia por una temporada.",
+    alt: "Visa Working Holiday Francia - Programa de vacaciones y trabajo para jóvenes latinoamericanos",
   },
   {
     id: "titre-de-sejour",
     title: "Titre de Séjour",
-    image: "/titre-de-séjour.png",
+    image: "/titre-de-séjour.webp",
     link: "/servicios/titre-de-sejour",
     description:
       "Regulariza tu residencia con asesoría personalizada y seguimiento.",
+    alt: "Titre de Séjour Francia - Permiso de residencia y renovación para extranjeros",
   },
   {
     id: "necesitas-aseoria",
     title: "Necesitas Asesoría",
-    image: "/servicio_asesoria.png",
+    image: "/servicio_asesoria.webp",
     link: "https://wa.me/33601526171",
     description: "Contactanos por WhatsApp y respondemos tus dudas en minutos.",
+    alt: "Asesoría migratoria personalizada Francia - Consulta por WhatsApp con expertos",
   },
 ];
 
@@ -110,10 +114,11 @@ export function ServicesSection() {
                 {/* Imagen con Zoom suave */}
                 <Image
                   src={service.image}
-                  alt={service.title}
+                  alt={service.alt}
                   fill
                   className="object-cover transition-transform duration-700 group-hover:scale-105"
                   sizes="(max-width: 768px) 100vw, 25vw"
+                  loading="lazy"
                 />
 
                 {/* Overlay Oscuro - Siempre visible en la parte inferior para el botón */}

@@ -89,8 +89,8 @@ export function Navbar() {
           >
             <div className="relative h-10 w-auto md:h-12 transition-transform duration-300 group-hover:scale-105">
               <Image
-                src="/logo-AF.png"
-                alt="Allée France Logo"
+                src="/logo-AF.webp"
+                alt="Allée France - Asesoría Migratoria Francia para Latinoamericanos"
                 width={140}
                 height={56}
                 className="h-full w-auto object-contain transition-all duration-300"

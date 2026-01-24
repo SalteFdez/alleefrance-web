@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "/student-studying-in-paris.jpg",
+        url: "/student-studying-in-paris.webp",
         width: 1200,
         height: 630,
         alt: "Visa Estudiante Francia - Allée France",
